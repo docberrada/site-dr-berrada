@@ -98,6 +98,10 @@ header.top.scrolled .wrap{padding-block:8px}
 .logo img{width:100%;height:100%;object-fit:cover;display:block}
 .brand b{font-family:var(--f-display);font-size:1.04rem;display:block;line-height:1.15;white-space:nowrap}
 .brand small{color:var(--muted);font-size:.78rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand>span{min-width:0;overflow:hidden}.brand b{overflow:hidden;text-overflow:ellipsis}
+/* Spécialités séparées par des tirets ; le tiret qui tomberait en début de ligne est masqué */
+.hsub{display:flex;flex-wrap:wrap;overflow:hidden;margin-inline-start:-1.3em}
+.hsub>span::before{content:"-";display:inline-block;width:1.3em;text-align:center}
 nav.links{margin-inline-start:auto;display:flex;gap:2px;align-items:center}
 nav.links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.93rem;padding:8px 10px;border-radius:10px}
 nav.links a:hover{background:var(--accent-soft)}
@@ -460,6 +464,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 .rev .src a{font-weight:600;text-decoration:none}
 @media (max-width:860px){.proofbox{grid-template-columns:1fr}}
 /* Essai « couleurs du logo » (bleu marine + bleu clair), visible seulement avec ?theme=logo, en attente de décision */
+#cabinet .eng{--t-blue:#e3ecf8;--t-blue-i:#2e60b0;--t-green:#e3f1e5;--t-green-i:#2b7a38;--t-amber:#fcefda;--t-amber-i:#b0660d;--warm-soft:#fbe8e3;--warm:#d6533a}
 :root[data-skin="logo"]{--ink:#171c3a;--muted:#5a6182;--line:#dfe3ee;--accent:#1f78ad;--accent-soft:#e3f0f8;--warm:#27276f;--warm-soft:#e7e7f3;--stage:#1a1a52;--stage-2:#25256b;--stage-ink:#eef1fb;--stage-muted:#aab2d8;--good:#1f78ad;
   --t-blue:#e3f0f8;--t-blue-i:#1f78ad;--t-green:#e7e7f3;--t-green-i:#27276f;--t-amber:#e3f0f8;--t-amber-i:#1f78ad;--t-violet:#e7e7f3;--t-violet-i:#27276f;--t-rose:#e3f0f8;--t-rose-i:#1f78ad;--shadow:0 1px 2px rgba(23,28,58,.05),0 10px 30px rgba(23,28,58,.08)}
 /* ===== Version téléphone (propositions validées le 18/10) ===== */
@@ -554,9 +559,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
       <div>
         <p class="langpill in"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span data-i="h_bil">Site en 2 langues</span><button type="button" data-lang="ar" lang="ar">عربي</button><button type="button" data-lang="fr">Français</button></p>
         <h1 class="in d1" data-i="h_title">Centre des maladies métaboliques <em>et du sommeil</em></h1>
-        <p class="hsub in d2" data-i="h_sub">Diabète · Maladies du poids · Maladies du sommeil · Nutrition et alimentation · Maladies du cholestérol · Goutte</p>
+        <p class="hsub in d2" data-i="h_sub"><span>Diabète</span><span>Maladies du poids</span><span>Maladies du sommeil</span><span>Nutrition et alimentation</span><span>Maladies du cholestérol</span><span>Goutte</span></p>
         <div class="welcome in d3">
-          <p data-i="h_p1"><b>Bienvenue au cabinet du Docteur Berrada Hicham.</b></p>
+          <p data-i="h_p1"><b>Bienvenue au cabinet du Docteur Berrada Hicham</b></p>
           <p data-i="h_p2">Une adresse unique, pour prendre en charge le diabète, les problèmes de poids, les troubles du sommeil et les maladies de la nutrition.</p>
         </div>
         <div class="cta-row in d4">
@@ -867,7 +872,7 @@ const WHATSAPP = "212600000000";
 
 /* ===== Textes arabes (le français est lu directement dans la page) ===== */
 const AR = {
-  brand:"د. هشام برادة", brand_sub:"عيادة الأمراض الأيضية واضطرابات النوم", nav_cab:"العيادة", h_bil:"موقع بلغتين", h_sub:"السكري · أمراض الوزن · اضطرابات النوم · التغذية والأكل · أمراض الكوليسترول · النقرس",
+  brand:"د. هشام برادة", brand_sub:"عيادة الأمراض الأيضية واضطرابات النوم", nav_cab:"العيادة", h_bil:"موقع بلغتين", h_sub:"<span>السكري</span><span>أمراض الوزن</span><span>اضطرابات النوم</span><span>التغذية والأكل</span><span>أمراض الكوليسترول</span><span>النقرس</span>",
   cab_eyebrow:"العيادة", cab_title:"طب نمط الحياة", cab_1:"هذه الأمراض، لكونها مزمنة، تتطلب مرافقة على المدى الطويل، ونظافة حياة جديدة، ونمط عيش أكثر صحة!",
   cab_2:"تعتمد طريقتنا في المرافقة والتكفل على سنوات طويلة من الخبرة إلى جانب المرضى الذين يعانون من هذه المشاكل الصحية. شعارها الوحيد هو تقديم حلول ملموسة وأجوبة واضحة لهؤلاء المرضى.",
   cab_3:"ومع مرور السنوات، ساهمت في ميلاد طب جديد يمكن أن نسميه: <b>طب نمط الحياة</b>!",
@@ -878,7 +883,7 @@ const AR = {
   h_eyebrow:"مرحبًا بكم في عيادة الدكتور برادة",
   h_title:"مركز الأمراض الأيضية <em>واضطرابات النوم</em>",
   h_arline:"Dr Hicham Berrada · Diabète, nutrition et sommeil",
-  h_p1:"<b>مرحبًا بكم في عيادة الدكتور برادة هشام.</b>",
+  h_p1:"<b>مرحبًا بكم في عيادة الدكتور برادة هشام</b>",
   h_p2:"عنوان واحد للتكفل بالسكري، ومشاكل الوزن، واضطرابات النوم، وأمراض التغذية.",
   h_cta1:"احجز موعدًا", h_cta2:"شاهده على القناة الثانية",
   h_photo_alt:"الدكتور هشام برادة في عيادته بالدار البيضاء", h_photo_cap:"الدكتور هشام برادة، في عيادته بالدار البيضاء",
