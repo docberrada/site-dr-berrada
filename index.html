@@ -321,6 +321,11 @@ ul.dots li::before{content:"";position:absolute;inset-inline-start:4px;top:.6em;
 .cv-photo figcaption b{display:block;font-family:var(--f-display);font-size:1.15rem}
 .cv-photo figcaption span{font-size:.85rem;opacity:.85}
 .cities{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.keys{display:grid;gap:12px;margin:0}
+.keys>div{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--surface)}
+.keys b{display:block}.keys small{color:var(--muted)}
+.keys i{font-style:normal;font-weight:800;color:var(--accent);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.keys>div{padding:16px 18px}@media (max-width:860px){#parcours .cv{gap:0}.keys{margin-top:4px}.keys>div{padding:12px 14px}}
 .city{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 8px;font-weight:600;font-size:.9rem}
 .city i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-style:normal;font-size:.75rem;font-weight:800}
 .tl-group{margin-top:22px}
@@ -501,10 +506,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   .more-t{display:block;width:100%;margin-top:12px;text-align:center;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:11px;font:600 .95rem var(--f-body);color:var(--ink);cursor:pointer}
   .more-t .l{display:none}.open .more-t .l{display:inline}.open .more-t .m{display:none}
   /* parcours */
-  .keys{display:grid;gap:10px;margin:14px 0 0}
-  .keys>div{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--surface)}
-  .keys b{display:block}.keys small{color:var(--muted)}
-  .keys i{font-style:normal;font-weight:800;color:var(--accent);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
   #parcours .cities,#parcours #publications{display:none}
   #parcours .tl-group{display:none}#parcours.open .tl-group{display:block}
   /* médias en carrousel */
@@ -642,34 +643,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
           <span class="city"><i>PAR</i><span data-i="city3">Paris</span></span>
           <span class="city"><i>CASA</i><span data-i="city4">Casablanca</span></span>
         </div>
-        <div class="keys m-only">
-          <div><i data-i="cv_k2i">Montpellier</i><b data-i="cv_k2t">Unité diabète - nutrition</b><small data-i="cv_k2s">Diplôme de 3e cycle en diabétologie, nutrition et diététique</small></div>
-          <div><i data-i="cv_k3i">CHU de Montpellier</i><b data-i="cv_k3t">Médecin attaché au CHU Lapeyronie et Gui de Chauliac</b><small data-i="cv_k3s">Maladies métaboliques, neurologie, laboratoire du sommeil</small></div>
-        </div>
-        <button type="button" class="more-t m-only" data-open="parcours"><span class="m" data-i="cv_all">Voir tout le parcours (9 étapes)</span><span class="l" data-i="cv_less">Masquer le parcours</span></button>
       </div>
       <div>
-        <div class="tl-group rv">
-          <h3 data-i="tl1_h">Diplômes</h3>
-          <ul class="timeline">
-            <li><b data-i="tl1_1b">Diplôme d'études spécialisées du sommeil et de ses pathologies</b><span data-i="tl1_1s">Faculté de médecine Xavier-Bichat, Paris</span></li>
-            <li><b data-i="tl1_2b">Diplôme d'études spécialisées de 3e cycle en diabétologie, nutrition et diététique médicale</b><span data-i="tl1_2s">Université de Montpellier 1</span></li>
-            <li><b data-i="tl1_3b">Docteur en médecine</b><span data-i="tl1_3s">Université de Montpellier 1</span></li>
-            <li><b data-i="tl1_4b">Études de médecine</b><span data-i="tl1_4s">Faculté de médecine de Bordeaux, Université Victor Segalen Bordeaux 2</span></li>
-            <li><b data-i="tl1_5b">Baccalauréat scientifique</b><span data-i="tl1_5s">Lycée Lyautey, académie de Bordeaux (France)</span></li>
-          </ul>
-        </div>
-        <div class="tl-group rv">
-          <h3 data-i="tl2_h">Expérience hospitalière · CHU de Montpellier</h3>
-          <ul class="timeline">
-            <li><b data-i="tl2_1b">Médecin attaché, service des maladies métaboliques et endocriniennes</b><span data-i="tl2_1s">Hôpital Lapeyronie, CHRU de Montpellier</span></li>
-            <li><b data-i="tl2_2b">Médecin attaché, centre d'exploration et de réadaptation des anomalies du métabolisme musculaire</b><span data-i="tl2_2s">Hôpital Lapeyronie, CHRU de Montpellier</span></li>
-            <li><b data-i="tl2_3b">Médecin attaché, service de neurologie</b><span data-i="tl2_3s">Hôpital Gui de Chauliac, CHU de Montpellier</span></li>
-            <li><b data-i="tl2_4b">Laboratoire du sommeil et centre de référence des maladies rares</b><span data-i="tl2_4s">Hôpital Gui de Chauliac, CHU de Montpellier</span></li>
-          </ul>
-        </div>
-        <div class="pubs rv" id="publications">
-          <article class="pub"><span class="yr ph">2025</span><div class="ti"><span class="ph" data-i="pub_t">Titre de la publication ou conférence</span><small><span class="ph" data-i="pub_s">Revue ou congrès, ville</span></small></div></article>
+        <div class="keys rv">
+          <div><i data-i="cv_k2i">Montpellier</i><b data-i="cv_k2t">Unité diabète - nutrition</b><small data-i="cv_k2s">Diplôme de 3e cycle en diabétologie, nutrition et diététique</small></div>
+          <div><i data-i="cv_k3i">CHU de Montpellier</i><b data-i="cv_k3t">Médecin attaché au CHU Lapeyronie et Gui de Chauliac</b><small data-i="cv_k3s">Maladies métaboliques, neurologie, laboratoire du sommeil</small></div>
         </div>
       </div>
     </div>
