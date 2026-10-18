@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dr Hicham Berrada</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Dr Hicham Berrada, diabétologue, nutritionniste et spécialiste du sommeil à Casablanca. Prise de rendez-vous, expertises, avis patients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Mise en page : en-tête collant, sections empilées sur une colonne centrale, cartes d'expertise en grille par famille. */
+:root{
+  --bg:#f6f8f9; --surface:#ffffff; --ink:#14262f; --muted:#5a6d76; --line:#dde5e8;
+  --accent:#0e7c7b; --accent-ink:#ffffff; --accent-soft:#e1f1f0;
+  --warm:#d9573b; --warm-soft:#fbe9e4;
+  --t-blue:#e4edf9; --t-blue-i:#2f62b3; --t-green:#e5f2e6; --t-green-i:#2f7d3a;
+  --t-amber:#fdf0dc; --t-amber-i:#b4690e; --t-violet:#ede8f8; --t-violet-i:#6a46b8;
+  --t-rose:#fbe6ec; --t-rose-i:#b83d63;
+  --ph:#fff4c2; --ph-ink:#6b5300;
+  --wa:#25a55a;
+  --shadow:0 1px 2px rgba(20,38,47,.05),0 8px 24px rgba(20,38,47,.06);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
+  --r:18px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d171c; --surface:#14222a; --ink:#e6eef1; --muted:#9ab0b8; --line:#243740;
+  --accent:#3fb7b2; --accent-ink:#06201f; --accent-soft:#163533;
+  --warm:#f07f63; --warm-soft:#3a201a;
+  --t-blue:#1a2b44; --t-blue-i:#8fb4f0; --t-green:#183020; --t-green-i:#8fd39a;
+  --t-amber:#35270f; --t-amber-i:#f0b866; --t-violet:#2a2240; --t-violet-i:#b9a1f0;
+  --t-rose:#3a1c26; --t-rose-i:#f09ab5;
+  --ph:#3d3412; --ph-ink:#f5dc7a; --wa:#2fbf6b;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d171c; --surface:#14222a; --ink:#e6eef1; --muted:#9ab0b8; --line:#243740;
+  --accent:#3fb7b2; --accent-ink:#06201f; --accent-soft:#163533;
+  --warm:#f07f63; --warm-soft:#3a201a;
+  --t-blue:#1a2b44; --t-blue-i:#8fb4f0; --t-green:#183020; --t-green-i:#8fd39a;
+  --t-amber:#35270f; --t-amber-i:#f0b866; --t-violet:#2a2240; --t-violet-i:#b9a1f0;
+  --t-rose:#3a1c26; --t-rose-i:#f09ab5;
+  --ph:#3d3412; --ph-ink:#f5dc7a; --wa:#2fbf6b;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:700;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto}
+.ph{background:var(--ph);color:var(--ph-ink);border-radius:5px;padding:0 .3em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* Bandeau démo */
+.demo{max-width:1120px;margin:12px auto 0;font-size:.85rem;color:var(--ph-ink);background:var(--ph);border-radius:12px;padding:8px 14px}
+
+/* En-tête */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
+.logo{width:40px;height:40px;flex:none;border-radius:12px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center}
+.brand b{font-family:var(--f-display);font-size:1.02rem;letter-spacing:.02em;display:block;line-height:1.1}
+.brand small{color:var(--muted);font-size:.78rem;display:block}
+nav.links{margin-left:auto;display:flex;gap:4px;align-items:center}
+nav.links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.93rem;padding:8px 10px;border-radius:10px}
+nav.links a:hover{background:var(--accent-soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 .95rem var(--f-body);border:0;cursor:pointer;
+  background:var(--warm);color:#fff;padding:12px 20px;border-radius:999px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px color-mix(in srgb,var(--warm) 35%,transparent)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);box-shadow:none}
+nav.links .btn{color:#fff;padding:9px 16px;margin-left:6px}
+nav.links .btn:hover{background:var(--warm)}
+.burger{display:none;margin-left:auto;background:none;border:0;color:var(--ink);padding:8px;cursor:pointer}
+@media (max-width:880px){
+  .burger{display:block}
+  nav.links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;
+    background:var(--surface);border-bottom:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));box-shadow:var(--shadow)}
+  nav.links.open{display:flex}
+  nav.links a{padding:12px}
+  nav.links .btn{margin:8px 0 0}
+}
+
+/* Sections */
+section{padding-block:64px}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+.lead{color:var(--muted);max-width:62ch;margin-top:12px;font-size:1.05rem}
+.head{margin-bottom:32px}
+
+/* Accueil / mot de bienvenue */
+.hero{padding-block:56px 40px}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.1rem,5.6vw,3.6rem);font-weight:700;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.welcome{margin-top:20px;max-width:58ch;color:var(--muted);font-size:1.08rem;display:grid;gap:12px}
+.welcome .sig{color:var(--ink);font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow);display:grid;gap:16px;min-width:0}
+.hero-card .row{display:flex;gap:14px;align-items:flex-start}
+.hero-card .row p{color:var(--muted);font-size:.93rem}
+.hero-card .row b{display:block;color:var(--ink);font-size:.98rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.82rem;padding:5px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+@media (max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:28px}}
+
+/* Pastilles d'icône */
+.tile{width:48px;height:48px;flex:none;border-radius:14px;display:grid;place-items:center}
+.tile svg{width:24px;height:24px}
+.c-blue{background:var(--t-blue);color:var(--t-blue-i)}
+.c-green{background:var(--t-green);color:var(--t-green-i)}
+.c-amber{background:var(--t-amber);color:var(--t-amber-i)}
+.c-violet{background:var(--t-violet);color:var(--t-violet-i)}
+.c-rose{background:var(--t-rose);color:var(--t-rose-i)}
+.c-teal{background:var(--accent-soft);color:var(--accent)}
+.c-warm{background:var(--warm-soft);color:var(--warm)}
+
+/* Expertises */
+.fam{margin-top:36px}
+.fam:first-of-type{margin-top:0}
+.fam-h{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.fam-h h3{font-size:1.3rem}
+.fam-h span{color:var(--muted);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{display:flex;align-items:center;gap:16px;padding:18px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);
+  text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s,box-shadow .2s;min-width:0}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.card .t{font-weight:600;font-size:1.02rem;line-height:1.3;min-width:0}
+.card .t small{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.card .go{margin-left:auto;color:var(--muted);flex:none;transition:transform .2s,color .2s}
+.card:hover .go{transform:translateX(3px);color:var(--accent)}
+
+/* Praticien */
+.doc{display:grid;grid-template-columns:320px 1fr;gap:44px;align-items:start}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:24px;background:linear-gradient(160deg,var(--accent-soft),var(--t-blue));display:grid;place-items:center;color:var(--accent);
+  border:1px solid var(--line);text-align:center;padding:20px;font-size:.88rem}
+.portrait svg{width:96px;height:96px;opacity:.7;margin-bottom:8px}
+.doc-body{display:grid;gap:16px;min-width:0}
+.doc-body p{color:var(--muted);max-width:65ch}
+.timeline{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:0;border-left:2px solid var(--line)}
+.timeline li{padding:0 0 14px 20px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.timeline b{display:block;font-size:.95rem}
+.timeline span{color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.doc{grid-template-columns:1fr}.portrait{max-width:300px}}
+
+/* Publications */
+.pubs{display:grid;gap:12px}
+.pub{display:grid;grid-template-columns:76px 1fr auto;gap:18px;align-items:center;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.pub .yr{font-family:var(--f-display);font-weight:700;font-size:1.4rem;color:var(--accent);font-variant-numeric:tabular-nums}
+.pub .ti{font-weight:600;min-width:0}
+.pub .ti small{display:block;color:var(--muted);font-weight:400;font-style:italic;font-size:.9rem}
+.pub a{font-weight:600;font-size:.9rem;white-space:nowrap}
+@media (max-width:620px){.pub{grid-template-columns:1fr;gap:6px}}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1.15fr;gap:32px;align-items:start}
+.info{display:grid;gap:14px}
+.info .row{display:flex;gap:14px;align-items:flex-start;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.info .row b{display:block}
+.info .row span{color:var(--muted);font-size:.95rem}
+.hours{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:4px;font-variant-numeric:tabular-nums}
+.hours td{padding:3px 0;color:var(--muted)}
+.hours td:last-child{text-align:right;color:var(--ink)}
+form.rdv{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px;display:grid;gap:14px;box-shadow:var(--shadow);min-width:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-weight:600;font-size:.9rem}
+input,select,textarea{font:inherit;font-weight:400;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:90px;resize:vertical}
+.result{border-radius:14px;background:var(--accent-soft);padding:14px;display:grid;gap:10px;font-size:.93rem}
+.result pre{white-space:pre-wrap;font:inherit;margin:0;color:var(--ink)}
+.result .acts{display:flex;flex-wrap:wrap;gap:10px}
+.note{font-size:.82rem;color:var(--muted)}
+@media (max-width:880px){.contact{grid-template-columns:1fr}}
+@media (max-width:520px){.two{grid-template-columns:1fr}}
+
+/* Localisation */
+.map{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--surface);min-height:280px;display:grid}
+.map canvas{position:absolute;inset:0;width:100%;height:100%}
+.map .over{position:relative;align-self:end;margin:18px;background:var(--surface);border-radius:18px;padding:18px;box-shadow:var(--shadow);display:flex;gap:16px;align-items:center;flex-wrap:wrap;max-width:560px}
+.map .over div{min-width:0;flex:1 1 220px}
+.map .over span{color:var(--muted);font-size:.93rem}
+
+/* Avis */
+.score{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.score .big{font-family:var(--f-display);font-size:2.6rem;font-weight:700;line-height:1}
+.stars{color:#f2a516;letter-spacing:2px;font-size:1.1rem}
+.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.rev{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:10px;align-content:start}
+.rev .who{display:flex;gap:10px;align-items:center}
+.av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.rev p{color:var(--muted);font-size:.95rem}
+.rev small{color:var(--muted);font-size:.8rem}
+
+.clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.clamp.open{display:block}
+.more{justify-self:start;background:none;border:0;padding:0;color:var(--accent);font:600 .88rem var(--f-body);cursor:pointer}
+.g-badge{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);padding-bottom:14px;border-bottom:1px solid var(--line)}
+.g-badge .big{font-family:var(--f-display);font-size:2.2rem;font-weight:700;line-height:1}
+.ar{font-size:1.15rem;color:var(--muted);margin-top:10px;font-family:"Noto Naskh Arabic","Geeza Pro",serif}
+
+/* Pied */
+footer{border-top:1px solid var(--line);padding-block:28px 100px;color:var(--muted);font-size:.88rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+
+/* Page détail */
+.detail{padding-block:28px 64px}
+.back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:600;font-size:.93rem;margin-bottom:22px}
+.d-head{display:flex;gap:18px;align-items:center;margin-bottom:22px}
+.d-head .tile{width:64px;height:64px;border-radius:18px}
+.d-head .tile svg{width:32px;height:32px}
+.d-head h1{font-size:clamp(1.8rem,4.6vw,2.7rem);letter-spacing:-.015em}
+.d-grid{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start}
+.d-main{display:grid;gap:26px;min-width:0}
+.d-main .intro{font-size:1.1rem;color:var(--muted);max-width:65ch}
+.d-main h2{font-size:1.35rem;margin-bottom:10px}
+.d-main ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.d-main li{position:relative;padding-left:26px;max-width:65ch}
+.d-main li::before{content:"";position:absolute;left:4px;top:.6em;width:9px;height:9px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+.aside{position:sticky;top:96px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:14px;box-shadow:var(--shadow)}
+.aside p{color:var(--muted);font-size:.93rem}
+.aside .others{display:grid;gap:4px;border-top:1px solid var(--line);padding-top:12px}
+.aside .others a{text-decoration:none;font-size:.92rem;padding:4px 0}
+@media (max-width:880px){.d-grid{grid-template-columns:1fr}.aside{position:static}}
+
+/* Boutons flottants (comme le site de référence) */
+.fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));z-index:30;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;border:0;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.fab.wa{bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--wa);color:#fff}
+.fab.up{bottom:calc(88px + env(safe-area-inset-bottom,0px));background:var(--warm);color:#fff;border-radius:16px;width:52px;height:52px;right:calc(21px + env(safe-area-inset-right,0px));
+  transition:opacity .25s,transform .25s}
+.fab.up.hide{opacity:0;transform:translateY(10px);pointer-events:none}
+.fab svg{width:28px;height:28px}
+
+/* Animation au défilement : seuls les éléments sous l'écran au chargement sont préparés */
+.pre{opacity:0;transform:translateY(26px)}
+.rv{transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.view-in{animation:viewIn .45s ease both}
+@keyframes viewIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pre{opacity:1;transform:none}.rv{transition:none}.view-in{animation:none}.card,.btn{transition:none}}
+</style>
+</head>
+<body style="margin:0">
+
+<div class="demo" id="demoBar">Version de travail : les éléments <span class="ph">surlignés en jaune</span> (photo, parcours, publications, WhatsApp, horaires) restent à compléter.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#accueil">
+      <span class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 6 7.2 6 10.5A6 6 0 0 1 6 13.5C6 10.2 9 7 12 3Z"/><path d="M9.5 14.5h5M12 12v5"/></svg></span>
+      <span><b class="dn">Dr Hicham Berrada</b><small>Diabète · Nutrition · Sommeil</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="links" id="nav">
+      <a href="#expertises">Expertises</a>
+      <a href="#praticien">Le praticien</a>
+      <a href="#publications">Publications</a>
+      <a href="#localisation">Localisation</a>
+      <a href="#avis">Avis</a>
+      <a class="btn" href="#rdv">Prendre rendez-vous</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero" id="accueil">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Bienvenue au cabinet</p>
+        <h1>Diabète, nutrition et sommeil : <em>un suivi qui vous ressemble.</em></h1>
+        <p class="ar" lang="ar" dir="rtl">أخصائي النوم والتغذية والسكري</p>
+        <div class="welcome">
+          <p>Chère patiente, cher patient, soyez la bienvenue. Mon cabinet à Casablanca vous accompagne dans le diagnostic et le suivi du diabète, des troubles du poids et de la nutrition, et des maladies du sommeil, à tous les âges de la vie, de l'enfant à la personne âgée.</p>
+          <p>Chaque consultation prend le temps de vous écouter, d'expliquer vos examens et de construire avec vous un traitement réaliste, adapté à votre quotidien.</p>
+          <p class="sig">Dr Hicham Berrada, diabétologue, nutritionniste et spécialiste du sommeil</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="#rdv">Prendre rendez-vous</a>
+          <a class="btn ghost" href="#expertises">Voir les expertises</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="En bref">
+        <a class="g-badge" href="#avis"><span class="big">4,8</span><span><span class="stars">★★★★★</span><br><b>284 avis Google</b></span></a>
+        <div class="row"><span class="tile c-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><div><b>Consultations sur rendez-vous</b><p>119 Av. Mohamed Bouziane, Casablanca. Téléphone : 05 22 56 37 38.</p></div></div>
+        <div class="row"><span class="tile c-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15.5A8 8 0 1 1 8.5 4a6.5 6.5 0 0 0 11.5 11.5Z"/></svg></span><div><b>Exploration du sommeil au cabinet</b><p>Polygraphie et polysomnographie pour le dépistage des apnées.</p></div></div>
+        <div class="row"><span class="tile c-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v6M8 21l4-8 4 8M7 10h10"/></svg></span><div><b>Analyse corporelle</b><p>Impédancemétrie : masse grasse, masse musculaire, hydratation.</p></div></div>
+        <div class="chips"><span class="chip">Enfants</span><span class="chip">Adultes</span><span class="chip">Seniors</span><span class="chip">Grossesse</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="expertises">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Domaines d'expertise</p>
+        <h2>Les pages consacrées à mes expertises</h2>
+        <p class="lead">Cliquez sur un domaine pour découvrir quand consulter et comment se déroule la prise en charge.</p>
+      </div>
+      <div id="families"></div>
+    </div>
+  </section>
+
+  <section id="praticien">
+    <div class="wrap doc">
+      <div class="portrait rv"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><br><span class="ph">Photo du praticien</span></div></div>
+      <div class="doc-body rv">
+        <p class="eyebrow">Le praticien</p>
+        <h2>Dr Hicham Berrada</h2>
+        <p>Diabétologue, nutritionniste et spécialiste du sommeil à Casablanca. Il prend en charge le diabète à tous les âges, l'insulinorésistance, l'obésité et la maigreur, ainsi que les troubles du sommeil comme l'insomnie et les apnées. Ses patients soulignent le temps qu'il consacre à chaque consultation et la clarté de ses explications.</p>
+        <p><span class="ph">Parcours à compléter : diplômes, formations, langues parlées.</span></p>
+        <ul class="timeline">
+          <li><b><span class="ph">Doctorat en médecine</span></b><span><span class="ph">Faculté de médecine de …, année</span></span></li>
+          <li><b><span class="ph">Spécialité en endocrinologie et maladies métaboliques</span></b><span><span class="ph">CHU de …, année</span></span></li>
+          <li><b><span class="ph">Diplôme universitaire de médecine du sommeil</span></b><span><span class="ph">Université de …, année</span></span></li>
+          <li><b><span class="ph">Diplôme universitaire de nutrition</span></b><span><span class="ph">Université de …, année</span></span></li>
+          <li><b><span class="ph">Membre de la société savante …</span></b><span><span class="ph">depuis …</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Publications</p>
+        <h2>Travaux et communications scientifiques</h2>
+      </div>
+      <div class="pubs">
+        <article class="pub rv"><span class="yr ph">2025</span><div class="ti"><span class="ph">Titre de la publication n°1</span><small><span class="ph">Nom de la revue, volume, pages</span></small></div><a href="#publications">Lire</a></article>
+        <article class="pub rv"><span class="yr ph">2023</span><div class="ti"><span class="ph">Titre de la publication n°2</span><small><span class="ph">Congrès ou revue, ville</span></small></div><a href="#publications">Lire</a></article>
+        <article class="pub rv"><span class="yr ph">2021</span><div class="ti"><span class="ph">Titre de la publication n°3</span><small><span class="ph">Nom de la revue, volume, pages</span></small></div><a href="#publications">Lire</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="rdv">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Nous contacter</p>
+        <h2>Prendre rendez-vous</h2>
+        <p class="lead">Remplissez le formulaire : votre demande est préparée en message WhatsApp, prête à envoyer au cabinet. Vous pouvez aussi appeler directement.</p>
+      </div>
+      <div class="contact">
+        <div class="info rv">
+          <div class="row"><span class="tile c-warm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span><div><b>Téléphone</b><span style="user-select:all">05 22 56 37 38</span></div></div>
+          <div class="row"><span class="tile c-green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.2 1.3Z"/></svg></span><div><b>WhatsApp</b><span class="ph" style="user-select:all">+212 6 00 00 00 00</span></div></div>
+          <div class="row"><span class="tile c-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div style="flex:1;min-width:0"><b>Horaires</b>
+            <table class="hours"><tr><td>Lundi – Vendredi</td><td>Dès 9h00 · <span class="ph">fin à confirmer</span></td></tr><tr><td>Samedi</td><td><span class="ph">à confirmer</span></td></tr><tr><td>Dimanche</td><td>Fermé</td></tr></table></div></div>
+        </div>
+        <form class="rdv rv" id="rdvForm" novalidate>
+          <div class="two">
+            <label for="f-name">Nom et prénom<input id="f-name" name="name" required autocomplete="name" placeholder="Ex. Salma Bennani"></label>
+            <label for="f-tel">Téléphone<input id="f-tel" name="tel" required type="tel" autocomplete="tel" placeholder="06 …"></label>
+          </div>
+          <label for="f-motif">Motif de consultation<select id="f-motif" name="motif"></select></label>
+          <div class="two">
+            <label for="f-type">Type de visite<select id="f-type" name="type"><option>Première consultation</option><option>Consultation de suivi</option><option>Examen du sommeil</option><option>Impédancemétrie</option></select></label>
+            <label for="f-when">Moment souhaité<select id="f-when" name="when"><option>Peu importe</option><option>Matin</option><option>Après-midi</option><option>Samedi matin</option></select></label>
+          </div>
+          <label for="f-msg">Message (facultatif)<textarea id="f-msg" name="msg" placeholder="Précisez si besoin : résultats d'analyses récents, traitement en cours…"></textarea></label>
+          <button class="btn" type="submit">Préparer ma demande</button>
+          <p class="note" id="formErr" hidden>Indiquez votre nom et votre téléphone pour que le cabinet puisse vous rappeler.</p>
+          <div class="result" id="result" hidden>
+            <b>Votre demande est prête. Envoyez-la au cabinet :</b>
+            <pre id="resText"></pre>
+            <div class="acts"><a class="btn" id="waLink" href="#" target="_blank" rel="noopener" style="background:var(--wa)">Envoyer sur WhatsApp</a><button class="btn ghost" type="button" id="copyBtn">Copier le texte</button></div>
+            <p class="note">Le rendez-vous est confirmé uniquement après la réponse du cabinet.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="localisation">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Localisation</p>
+        <h2>Accès au cabinet</h2>
+      </div>
+      <div class="map rv">
+        <canvas id="mapCanvas" aria-hidden="true"></canvas>
+        <div class="over">
+          <span class="tile c-warm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div><b>119, Avenue Mohamed Bouziane</b><br><span>Immeuble Farhatine 6, 3ᵉ étage · Casablanca</span></div>
+          <a class="btn" href="https://maps.google.com/?cid=11214821160782499541" target="_blank" rel="noopener">Ouvrir dans Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="avis">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Avis Google</p>
+        <h2>Ce que disent les patients</h2>
+        <p class="lead">Une sélection d'avis laissés sur la fiche Google du cabinet.</p>
+      </div>
+      <div class="score rv"><span class="big">4,8</span><div><div class="stars" aria-label="4,8 sur 5">★★★★★</div><span class="note">284 avis sur Google</span></div><a class="btn ghost" href="https://maps.google.com/?cid=11214821160782499541" target="_blank" rel="noopener" style="margin-left:auto">Voir tous les avis</a></div>
+      <div class="reviews" id="reviews"></div>
+    </div>
+  </section>
+</main>
+
+<main id="detail" class="detail" hidden></main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Cabinet du Dr Hicham Berrada · 119 Av. Mohamed Bouziane, Casablanca · 05 22 56 37 38</span>
+    <span>Les informations de ce site ne remplacent pas une consultation médicale. En cas d'urgence, appelez le 141 (SAMU).</span>
+  </div>
+</footer>
+
+<a class="fab wa" id="fabWa" href="https://wa.me/212600000000" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.2 1.3Z"/></svg></a>
+<button class="fab up hide" id="fabUp" aria-label="Remonter en haut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></button>
+
+<script>
+/* ===== À REMPLACER : numéro WhatsApp du cabinet (format international, sans +) ===== */
+const WHATSAPP = "212600000000";
+
+const I = {
+  drop:'<path d="M12 3c3 4 6 7.2 6 10.5A6 6 0 0 1 6 13.5C6 10.2 9 7 12 3Z"/>',
+  child:'<circle cx="12" cy="6" r="3"/><path d="M8 21v-5l-2-3 6-2 6 2-2 3v5M10 21v-4h4v4"/>',
+  adult:'<circle cx="12" cy="5" r="2.5"/><path d="M9 21v-7H7l1-6h8l1 6h-2v7M12 14v7"/>',
+  senior:'<circle cx="11" cy="5" r="2.5"/><path d="M9 21l1-6-2-2 1-5h4l2 5M17 13v8M15 13h3"/>',
+  preg:'<circle cx="11" cy="5" r="2.5"/><path d="M10 21v-6l-2-1 1-6h3c3 1 4 3.5 3.5 5.5S13 15 12 15v6"/>',
+  apple:'<path d="M12 7c-2-1.5-6-1-6.5 3.5S8 21 12 19c4 2 7-4 6.5-8.5S14 5.5 12 7Z"/><path d="M12 7c0-2 1-3.5 3-4"/>',
+  gauge:'<path d="M4 17a8 8 0 1 1 16 0"/><path d="m12 17 4-5"/><circle cx="12" cy="17" r="1.5"/>',
+  scale:'<rect x="3" y="4" width="18" height="16" rx="4"/><path d="M8 9a5 5 0 0 1 8 0l-3 3"/>',
+  feather:'<path d="M20 4C11 4 6 9 6 18l-2 2"/><path d="M6 18c6 0 11-3 14-14M9 15h5"/>',
+  leaf:'<path d="M5 19c0-9 5-14 15-14 0 10-5 15-14 15"/><path d="M5 19 13 11"/>',
+  body:'<circle cx="12" cy="4.5" r="2"/><path d="M12 7v6M8 21l4-8 4 8M6 10h12"/><path d="M3 15h2M19 15h2"/>',
+  heart:'<path d="M12 20s-8-4.7-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5C20 15.3 12 20 12 20Z"/><path d="M7 12h3l1.5-2 2 4 1.5-2h2"/>',
+  crystal:'<path d="m12 3 6 6-6 12-6-12 6-6Z"/><path d="M6 9h12M12 3v18"/>',
+  flower:'<circle cx="12" cy="12" r="2.5"/><path d="M12 9.5V4M12 14.5V20M9.5 12H4M14.5 12H20"/><circle cx="12" cy="4" r="1.5"/><circle cx="12" cy="20" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="20" cy="12" r="1.5"/>',
+  moon:'<path d="M20 15.5A8 8 0 1 1 8.5 4a6.5 6.5 0 0 0 11.5 11.5Z"/>',
+  wind:'<path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h7"/>',
+  wave:'<path d="M2 12h4l2-6 4 12 3-8 2 2h5"/>',
+  brain:'<path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1V5a2 2 0 0 0-3-1ZM15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1"/>'
+};
+const svg = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${I[k]}</svg>`;
+
+const FAMILIES = [
+  {name:"Diabète", sub:"À tous les âges de la vie", items:[
+    {id:"diabete-enfant", t:"Diabète de l'enfant", s:"Diabète de type 1 et suivi de croissance", ic:"child", c:"c-blue",
+     intro:"Le diabète de l'enfant est le plus souvent un diabète de type 1 : le pancréas ne produit plus d'insuline. Le traitement repose sur l'insuline, l'éducation de l'enfant et de sa famille, et un suivi régulier pour qu'il grandisse et vive normalement.",
+     when:["Soif intense, envie fréquente d'uriner, pipi au lit qui réapparaît","Amaigrissement ou fatigue inexpliqués","Diabète déjà connu à ajuster (glycémies instables, hypoglycémies)","Passage de l'adolescence et préparation à l'autonomie"],
+     care:["Mise en place et réglage du traitement par insuline (stylos, pompe)","Formation de l'enfant et des parents : glycémie, capteurs, resucrage","Lien avec l'école : projet d'accueil, collations, sport","Suivi de la croissance, de l'HbA1c et dépistage des complications"]},
+    {id:"diabete-adulte", t:"Diabète de l'adulte", s:"Type 1, type 2 et formes particulières", ic:"adult", c:"c-blue",
+     intro:"Chez l'adulte, le diabète de type 2 est le plus fréquent. Il s'installe souvent sans symptôme. Un bon équilibre protège le cœur, les reins, les yeux et les nerfs.",
+     when:["Glycémie à jeun supérieure à 1,26 g/l ou HbA1c au-dessus de 6,5 %","Diabète déséquilibré malgré le traitement","Besoin de démarrer ou d'adapter l'insuline","Bilan annuel des complications"],
+     care:["Bilan complet et explication des résultats","Choix du traitement adapté : comprimés, injections, insuline","Capteurs de glucose en continu et lecture des courbes","Dépistage des complications : yeux, reins, pieds, cœur"]},
+    {id:"diabete-senior", t:"Diabète du sujet âgé", s:"Un traitement sûr et adapté", ic:"senior", c:"c-blue",
+     intro:"Après 70 ans, les objectifs du traitement sont ajustés à l'état de santé global. La priorité est d'éviter les hypoglycémies, les chutes et la dénutrition tout en préservant l'autonomie.",
+     when:["Hypoglycémies, malaises ou chutes","Plusieurs médicaments à revoir ensemble","Perte de poids, perte d'appétit","Difficulté à gérer seul son traitement"],
+     care:["Objectifs glycémiques personnalisés","Simplification du traitement et des horaires","Prévention de la dénutrition et des chutes","Coordination avec la famille, le médecin traitant et l'infirmier"]},
+    {id:"diabete-grossesse", t:"Diabète de la grossesse", s:"Diabète gestationnel et grossesse diabétique", ic:"preg", c:"c-rose",
+     intro:"Le diabète gestationnel apparaît pendant la grossesse, souvent au 2e trimestre. Bien pris en charge, il permet une grossesse et un accouchement sereins. Les femmes déjà diabétiques doivent préparer leur grossesse en amont.",
+     when:["Test de dépistage (HGPO) anormal pendant la grossesse","Glycémie à jeun supérieure à 0,92 g/l au 1er trimestre","Projet de grossesse chez une femme diabétique","Antécédent de diabète gestationnel"],
+     care:["Carnet de glycémies et objectifs simples","Conseils alimentaires adaptés à la grossesse","Insuline si nécessaire, en lien avec le gynécologue","Contrôle après l'accouchement pour prévenir le diabète de type 2"]}
+  ]},
+  {name:"Nutrition et métabolisme", sub:"Poids, alimentation, bilan lipidique", items:[
+    {id:"alimentation-diabete", t:"Alimentation spécifique du diabète", s:"Manger mieux sans se priver", ic:"apple", c:"c-green",
+     intro:"L'alimentation est un pilier du traitement du diabète. L'objectif est de garder le plaisir de manger, y compris les plats traditionnels, en apprenant à équilibrer les repas et à gérer les glucides.",
+     when:["Diabète récemment découvert","Glycémies élevées après les repas","Période du Ramadan ou de fêtes à préparer","Besoin de perdre du poids"],
+     care:["Bilan des habitudes alimentaires","Repérage des glucides et index glycémique","Menus types adaptés à la cuisine familiale","Accompagnement du jeûne du Ramadan"]},
+    {id:"insulinoresistance", t:"Insulinorésistance et syndrome métabolique", s:"Dépister avant le diabète", ic:"gauge", c:"c-amber",
+     intro:"L'insulinorésistance signifie que l'insuline agit moins bien. Associée au tour de taille élevé, à la tension, aux graisses dans le sang, elle forme le syndrome métabolique qui augmente le risque de diabète et de maladie cardiaque.",
+     when:["Tour de taille élevé, prise de poids au ventre","Prédiabète (glycémie entre 1,00 et 1,25 g/l)","Tension, cholestérol ou triglycérides élevés","Taches brunes au cou ou aux aisselles (acanthosis)"],
+     care:["Bilan sanguin et mesures ciblées","Calcul du risque cardiovasculaire","Plan d'activité physique et d'alimentation","Traitement médicamenteux si nécessaire"]},
+    {id:"obesites", t:"Obésités et complications", s:"Prise en charge médicale du poids", ic:"scale", c:"c-amber",
+     intro:"L'obésité est une maladie chronique, pas un manque de volonté. Elle a des causes multiples, parfois hormonales. Une prise en charge médicale permet une perte de poids durable et réduit ses complications.",
+     when:["IMC supérieur à 30, ou à 27 avec des complications","Échecs répétés des régimes","Ronflements, fatigue, douleurs articulaires","Projet de traitement médicamenteux ou de chirurgie"],
+     care:["Recherche d'une cause hormonale (thyroïde, cortisol…)","Bilan des complications : diabète, apnées, foie gras","Traitements modernes de l'obésité si indiqués","Préparation et suivi de la chirurgie bariatrique"]},
+    {id:"maigreurs", t:"Maigreurs et maladies associées", s:"Comprendre une perte de poids", ic:"feather", c:"c-amber",
+     intro:"Une maigreur ou une perte de poids inexpliquée doit être explorée. Elle peut être constitutionnelle, mais aussi révéler une maladie hormonale, digestive ou un trouble du comportement alimentaire.",
+     when:["IMC inférieur à 18,5","Perte de poids involontaire de plus de 5 % en quelques mois","Difficulté à prendre du poids malgré une alimentation correcte","Troubles des règles, fatigue, palpitations"],
+     care:["Bilan hormonal (thyroïde, surrénales…) et nutritionnel","Analyse de la composition corporelle","Plan de reprise de poids progressif","Orientation spécialisée si besoin"]},
+    {id:"nutrition", t:"Maladies de la nutrition", s:"Carences et déséquilibres", ic:"leaf", c:"c-green",
+     intro:"Les maladies de la nutrition regroupent les carences (fer, vitamine D, B12…), la dénutrition et les déséquilibres liés à certains régimes ou à une chirurgie digestive.",
+     when:["Fatigue persistante, chute de cheveux, crampes","Carence en vitamine D, fer ou B12","Après une chirurgie de l'obésité","Régime végétarien ou restrictif"],
+     care:["Bilan biologique ciblé","Supplémentation adaptée et contrôlée","Conseils alimentaires personnalisés","Suivi à long terme après chirurgie"]},
+    {id:"impedancemetrie", t:"Analyse corporelle par impédancemétrie", s:"Masse grasse, muscle, eau", ic:"body", c:"c-teal",
+     intro:"L'impédancemétrie est un examen simple et indolore réalisé au cabinet. Un faible courant électrique, que l'on ne sent pas, mesure la répartition entre masse grasse, masse musculaire et eau du corps.",
+     when:["Suivi d'une perte de poids (perdre du gras, pas du muscle)","Obésité, maigreur ou dénutrition","Suivi sportif","Évaluation de la graisse viscérale"],
+     care:["Examen de quelques minutes, debout, pieds nus","Résultats expliqués et remis le jour même","Comparaison d'une visite à l'autre","Contre-indiqué en cas de pacemaker ou de grossesse"]},
+    {id:"hypercholesterolemie", t:"Hypercholestérolémies", s:"Cholestérol et risque cardiaque", ic:"heart", c:"c-rose",
+     intro:"Un excès de LDL-cholestérol (« mauvais cholestérol ») favorise les maladies du cœur et des artères. Certaines formes sont familiales et doivent être traitées tôt.",
+     when:["LDL-cholestérol élevé au bilan sanguin","Antécédent familial d'infarctus précoce ou de cholestérol très élevé","Dépôts de cholestérol sur les paupières ou les tendons","Intolérance à un traitement par statine"],
+     care:["Évaluation du risque cardiovasculaire global","Recherche d'une forme familiale","Conseils alimentaires anti-cholestérol","Choix et ajustement du traitement"]},
+    {id:"hyperuricemie", t:"Hyperuricémies", s:"Acide urique et goutte", ic:"crystal", c:"c-violet",
+     intro:"L'hyperuricémie est un excès d'acide urique dans le sang. Elle peut provoquer des crises de goutte, des calculs rénaux et s'associe souvent au syndrome métabolique.",
+     when:["Acide urique élevé au bilan","Crise de goutte (gros orteil rouge et douloureux)","Calculs rénaux","Diabète, surpoids ou tension associés"],
+     care:["Recherche des causes alimentaires et médicamenteuses","Conseils sur l'alimentation et les boissons","Traitement de fond si nécessaire","Prise en charge globale du métabolisme"]}
+  ]},
+  {name:"Hormones", sub:"Endocrinologie de la femme", items:[
+    {id:"sopk", t:"Syndrome des ovaires polykystiques (SOPK)", s:"Cycles, pilosité, fertilité", ic:"flower", c:"c-rose",
+     intro:"Le SOPK touche environ une femme sur dix. Il associe des troubles des règles, un excès d'hormones masculines (acné, pilosité) et souvent une insulinorésistance. Il se soigne bien.",
+     when:["Règles irrégulières ou absentes","Acné, pilosité excessive, chute de cheveux","Prise de poids difficile à contrôler","Difficultés à concevoir"],
+     care:["Bilan hormonal et échographie","Traitement des symptômes : cycles, peau, pilosité","Prise en charge de l'insulinorésistance","Coordination avec le gynécologue pour la fertilité"]}
+  ]},
+  {name:"Sommeil", sub:"Diagnostic et explorations au cabinet", items:[
+    {id:"sommeil", t:"Maladies du sommeil", s:"Insomnie, somnolence, troubles du rythme", ic:"moon", c:"c-violet",
+     intro:"Un mauvais sommeil retentit sur l'humeur, le poids, la glycémie et la tension. Les troubles du sommeil sont fréquents et ont des traitements efficaces.",
+     when:["Difficulté à s'endormir ou réveils nocturnes","Somnolence dans la journée","Jambes sans repos","Horaires de sommeil décalés"],
+     care:["Consultation dédiée et questionnaires du sommeil","Agenda du sommeil","Explorations si besoin (polygraphie, polysomnographie)","Traitement adapté, sans dépendance aux somnifères"]},
+    {id:"apnees", t:"Syndrome d'apnées obstructives du sommeil", s:"Ronflements et pauses respiratoires", ic:"wind", c:"c-violet",
+     intro:"Pendant le sommeil, la gorge se ferme et la respiration s'arrête plusieurs fois par heure. Ces apnées fatiguent, augmentent la tension et le risque cardiaque, et déséquilibrent le diabète.",
+     when:["Ronflements forts, pauses respiratoires remarquées par l'entourage","Fatigue au réveil, maux de tête le matin","Somnolence au volant","Obésité, diabète ou tension difficile à contrôler"],
+     care:["Dépistage par polygraphie ou polysomnographie","Explication des résultats (index d'apnées)","Mise en place de la PPC (appareil de nuit) si nécessaire","Suivi de l'efficacité et de la tolérance"]},
+    {id:"polygraphie", t:"Polygraphie du sommeil", s:"Examen à domicile", ic:"wave", c:"c-teal",
+     intro:"La polygraphie enregistre pendant une nuit la respiration, les ronflements, l'oxygène dans le sang et la position. Elle se fait chez vous, dans votre lit, avec un petit appareil.",
+     when:["Suspicion d'apnées du sommeil","Contrôle de l'efficacité d'un traitement","Bilan avant une chirurgie"],
+     care:["Pose de l'appareil au cabinet en fin de journée","Nuit à domicile, retour de l'appareil le lendemain","Lecture et interprétation par le médecin","Compte rendu et consultation de résultats"]},
+    {id:"polysomnographie", t:"Polysomnographie du sommeil", s:"L'examen complet du sommeil", ic:"brain", c:"c-teal",
+     intro:"La polysomnographie est l'examen de référence. En plus de la respiration, elle enregistre l'activité du cerveau, des yeux et des muscles pour analyser précisément les stades du sommeil.",
+     when:["Polygraphie non concluante","Somnolence importante inexpliquée","Mouvements anormaux ou comportements pendant le sommeil","Suspicion de narcolepsie ou d'autres troubles du sommeil"],
+     care:["Préparation et pose des capteurs (indolores)","Enregistrement d'une nuit complète","Analyse détaillée des stades du sommeil","Consultation de résultats et plan de traitement"]}
+  ]}
+];
+const ALL = FAMILIES.flatMap(f => f.items);
+
+const REVIEWS = [
+  {n:"Fatima Zahrae A.", c:"c-rose", d:"il y a un an", t:"Je tiens à remercier chaleureusement le Dr Berrada Hicham pour son accompagnement exceptionnel auprès de ma mère qui est suivie pour son diabète. Il y a un an, son taux de glycémie était à 10. Aujourd’hui, grâce à son suivi rigoureux, ses conseils personnalisés et son professionnalisme, elle est à 6 — un changement radical qui a transformé son quotidien."},
+  {n:"Nora E.", c:"c-amber", d:"il y a un an", t:"J'ai consulté le dr berrada en février 2025 pour un probleme d'obésité morbide. Je suis très contente de l'accompagnement qui m' à été proposé ainsi que du traitement. Apres 7 mois de suivi je suis passé de 120 kilos à 95 kg actuellement. Mon coprs a beaucoup changé ainsi que mes analyses. La graisse du foie à beaucoup diminué. Je le recommande vivement à toute personne souhaitant maigrir."},
+  {n:"Nada A.", c:"c-violet", d:"il y a 2 ans", t:"J'ai consulté le Dr. Berrada pour des troubles de sommeil et je suis extrêmement satisfaite de son approche. Il prend le temps de comprendre les problèmes, ses conseils sont efficaces, et le traitement recommandé a grandement amélioré ma qualité de sommeil. Merci, Dr. Berrada, pour votre expertise et votre attention. Je le recommande vivement."},
+  {n:"Kawtar S.", c:"c-teal", d:"il y a 8 mois", t:"Médecin très compétent et humain, toujours à l’écoute et bienveillant. Il prend le temps de rassurer, d’expliquer clairement et de proposer un suivi sérieux. On se sent en confiance dès la première consultation. Je recommande sans hésitation."},
+  {n:"Mouna", c:"c-green", d:"il y a un an", t:"Médecin à la hauteur de mes attentes, j'ai traversé tout casablanca pour une consultation suite aux recommandations que j'ai lu, et je n'ai pas été déçue, il m'a donné tout le temps possible pour m'expliquer mon cas ce qui se passe dans le corps, comment ça fonctionne etc.. un vrai cours de médecine ^^ j'en avais besoin car ayant une résistance à l'insuline j'avais trop peur et avais vraiment besoin d'une vraie explication et un vrai traitement."},
+  {n:"Khady C.", c:"c-blue", d:"il y a un an", t:"Je suis venu du Sénégal spécialement pour voir le dr berrada. Je suis très contente de l’accueil et du service proposé. Au bout de 2 jours mon diabète s’est amélioré. Alors que je prenais un traitement prescris par mon médecin au Sénégal depuis 2017 sans résultat. Je n’hésiterais pas à retourner voir le dr berrada. Il a accepté aussi de me suivre à distance."},
+  {n:"Samah A.", c:"c-violet", d:"il y a 3 ans", t:"Ma première consultation portait sur un problème de poids et de sommeil qui remonte à plusieurs années. Le Dr berrada a pris le temps de m’expliquer les liens qui existaient entre la prise de poids et les troubles du sommeil. Il avait suspecté un problème d’apnées du sommeil pouvant être à l’origine de mon ronflement, de ma fatigue chronique et de mes difficultés de concentration au travail. Grâce à lui et après un suivi de deux mois j’ai réussi à perdre 15 kilos. Mon sommeil s’est beaucoup amélioré."},
+  {n:"Yassine Z.", c:"c-teal", d:"il y a 11 mois", t:"Le Dr. Hicham Berrada est un excellent spécialiste. Très à l’écoute, clair dans ses explications et prend vraiment le temps de comprendre le patient. Son approche est professionnelle et rassurante. Je le recommande vivement."}
+];
+
+/* ===== Rendu ===== */
+const chev = '<svg class="go" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg>';
+document.getElementById("families").innerHTML = FAMILIES.map(f => `
+  <div class="fam">
+    <div class="fam-h rv"><h3>${f.name}</h3><span>${f.sub}</span></div>
+    <div class="grid">${f.items.map(x => `
+      <a class="card rv" href="#${x.id}"><span class="tile ${x.c}">${svg(x.ic)}</span><span class="t">${x.t}<small>${x.s}</small></span>${chev}</a>`).join("")}
+    </div>
+  </div>`).join("");
+
+document.getElementById("f-motif").innerHTML = FAMILIES.map(f =>
+  `<optgroup label="${f.name}">${f.items.map(x => `<option value="${x.id}">${x.t}</option>`).join("")}</optgroup>`).join("") +
+  `<optgroup label="Autre"><option value="autre">Autre motif</option></optgroup>`;
+
+document.getElementById("reviews").innerHTML = REVIEWS.map(r => `
+  <article class="rev rv"><div class="who"><span class="av ${r.c}">${r.n[0]}</span><div><b>${r.n}</b><div class="stars" style="font-size:.85rem">★★★★★</div></div></div>
+  <p class="clamp">« ${r.t} »</p><button class="more" type="button" hidden>Lire la suite</button><small>${r.d} · Avis Google</small></article>`).join("");
+document.querySelectorAll(".rev").forEach(a => {
+  const p = a.querySelector(".clamp"), b = a.querySelector(".more");
+  if (p.scrollHeight > p.clientHeight + 4) { b.hidden = false; b.onclick = () => { const o = p.classList.toggle("open"); b.textContent = o ? "Réduire" : "Lire la suite"; }; }
+});
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+/* ===== Pages détail (adresse #identifiant) ===== */
+const home = document.getElementById("home"), detail = document.getElementById("detail");
+function showDetail(x){
+  const fam = FAMILIES.find(f => f.items.includes(x));
+  const others = ALL.filter(o => o !== x && fam.items.includes(o)).concat(ALL.filter(o => !fam.items.includes(o))).slice(0,6);
+  detail.innerHTML = `<div class="wrap view-in">
+    <a class="back" href="#expertises"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m15 6-6 6 6 6"/></svg>Toutes les expertises</a>
+    <p class="eyebrow">${fam.name}</p>
+    <div class="d-head"><span class="tile ${x.c}">${svg(x.ic)}</span><h1>${x.t}</h1></div>
+    <div class="d-grid">
+      <div class="d-main">
+        <p class="intro">${x.intro}</p>
+        <div><h2>Quand consulter ?</h2><ul>${x.when.map(w=>`<li>${w}</li>`).join("")}</ul></div>
+        <div><h2>Notre prise en charge</h2><ul>${x.care.map(w=>`<li>${w}</li>`).join("")}</ul></div>
+        <p class="note">Ces informations sont générales et ne remplacent pas l'avis de votre médecin.</p>
+      </div>
+      <aside class="aside">
+        <h3>Prendre rendez-vous</h3>
+        <p>Consultation pour : <b style="color:var(--ink)">${x.t}</b></p>
+        <a class="btn" href="#rdv" data-motif="${x.id}">Demander un rendez-vous</a>
+        <div class="others"><b style="font-size:.9rem">Autres expertises</b>${others.map(o=>`<a href="#${o.id}">${o.t}</a>`).join("")}</div>
+      </aside>
+    </div></div>`;
+  home.hidden = true; detail.hidden = false;
+  document.title = x.t + " · Dr Hicham Berrada";
+  window.scrollTo(0,0);
+}
+function route(){
+  const id = location.hash.slice(1);
+  const x = ALL.find(i => i.id === id);
+  if (x) return showDetail(x);
+  const wasDetail = !detail.hidden;
+  detail.hidden = true; home.hidden = false;
+  document.title = "Dr Hicham Berrada";
+  if (wasDetail && id) { const el = document.getElementById(id); if (el) requestAnimationFrame(()=>el.scrollIntoView()); }
+}
+window.addEventListener("hashchange", route);
+detail.addEventListener("click", e => {
+  const a = e.target.closest("[data-motif]");
+  if (a) document.getElementById("f-motif").value = a.dataset.motif;
+});
+route();
+
+/* ===== Menu mobile ===== */
+const nav = document.getElementById("nav"), burger = document.getElementById("burger");
+burger.addEventListener("click", () => { const o = nav.classList.toggle("open"); burger.setAttribute("aria-expanded", o); });
+nav.addEventListener("click", e => { if (e.target.closest("a")) { nav.classList.remove("open"); burger.setAttribute("aria-expanded", false); } });
+
+/* ===== Animation au défilement (comme le site de référence) ===== */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if ("IntersectionObserver" in window && !reduce) {
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.remove("pre"); io.unobserve(en.target); }
+  }), {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+  const vh = innerHeight;
+  document.querySelectorAll(".rv").forEach((el,i) => {
+    if (el.getBoundingClientRect().top > vh) {
+      el.classList.add("pre");
+      const sibs = [...el.parentElement.children].filter(c=>c.classList.contains("rv"));
+      el.style.transitionDelay = (Math.min(sibs.indexOf(el),5) * 70) + "ms";
+      io.observe(el);
+    }
+  });
+}
+
+/* ===== Bouton remonter ===== */
+const up = document.getElementById("fabUp");
+addEventListener("scroll", () => up.classList.toggle("hide", scrollY < 500), {passive:true});
+up.addEventListener("click", () => scrollTo({top:0, behavior: reduce ? "auto" : "smooth"}));
+
+/* ===== Formulaire de rendez-vous -> message WhatsApp ===== */
+document.getElementById("fabWa").href = "https://wa.me/" + WHATSAPP;
+const form = document.getElementById("rdvForm");
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const err = document.getElementById("formErr");
+  if (!v("f-name") || !v("f-tel")) { err.hidden = false; return; }
+  err.hidden = true;
+  const motif = document.getElementById("f-motif").selectedOptions[0].text;
+  const txt = `Bonjour, je souhaite prendre rendez-vous.\nNom : ${v("f-name")}\nTéléphone : ${v("f-tel")}\nMotif : ${motif}\nType : ${v("f-type")}\nMoment souhaité : ${v("f-when")}` + (v("f-msg") ? `\nMessage : ${v("f-msg")}` : "");
+  document.getElementById("resText").textContent = txt;
+  document.getElementById("waLink").href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(txt);
+  const r = document.getElementById("result"); r.hidden = false; r.scrollIntoView({block:"nearest", behavior: reduce ? "auto" : "smooth"});
+});
+document.getElementById("copyBtn").addEventListener("click", e => {
+  const b = e.currentTarget, t = document.getElementById("resText").textContent;
+  const sel = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById("resText")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { b.textContent = "Copié"; setTimeout(()=>b.textContent="Copier le texte",1800); }).catch(sel);
+});
+
+/* ===== Plan stylisé (le vrai plan s'ouvre dans Google Maps) ===== */
+(function(){
+  const cv = document.getElementById("mapCanvas"), ctx = cv.getContext("2d");
+  function draw(){
+    const r = cv.getBoundingClientRect(), d = devicePixelRatio || 1;
+    cv.width = r.width*d; cv.height = r.height*d; ctx.setTransform(d,0,0,d,0,0);
+    const cs = getComputedStyle(document.documentElement), g = n => cs.getPropertyValue(n).trim();
+    ctx.fillStyle = g("--accent-soft"); ctx.fillRect(0,0,r.width,r.height);
+    ctx.fillStyle = g("--t-green"); [[.05,.1,.22,.3],[.7,.55,.25,.35],[.4,.05,.15,.2]].forEach(([x,y,w,h])=>ctx.fillRect(x*r.width,y*r.height,w*r.width,h*r.height));
+    ctx.strokeStyle = g("--surface"); ctx.lineCap = "round";
+    [[0,.35,1,.5,14],[.3,0,.45,1,12],[0,.8,1,.7,8],[.75,0,.6,1,8],[.1,0,.2,1,6]].forEach(([a,b,c,dd,w])=>{ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(a*r.width,b*r.height);ctx.lineTo(c*r.width,dd*r.height);ctx.stroke();});
+    const px = r.width*.62, py = r.height*.3;
+    ctx.fillStyle = g("--warm"); ctx.beginPath(); ctx.arc(px,py,11,0,7); ctx.fill();
+    ctx.fillStyle = g("--surface"); ctx.beginPath(); ctx.arc(px,py,4,0,7); ctx.fill();
+  }
+  draw(); addEventListener("resize", draw);
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+})();
+</script>
+</body>
+</html>
