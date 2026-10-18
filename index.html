@@ -8,7 +8,7 @@
 <meta name="description" content="Dr Hicham Berrada, diabétologue, nutritionniste et médecin du sommeil à Casablanca. Formé à Bordeaux, Montpellier et Paris, vu sur 2M, 4,8/5 sur 284 avis Google.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Physician","name":"Dr Hicham Berrada","medicalSpecialty":["Endocrine","DietNutrition","SleepMedicine"],"telephone":"+212522563738","image":"img/dr-berrada-2m.jpg","address":{"@type":"PostalAddress","streetAddress":"119, Avenue Mohamed Bouziane, Immeuble Farhatine 6, 3e étage","addressLocality":"Casablanca","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5622016,"longitude":-7.5595299}}</script>
 <style>
 /* Mise en page : la preuve d'abord. Héros avec photo 2M + bandeau de preuves, plateau média sombre, avis et résultats, thèmes phares avec comparateurs avant/après, parcours, expertises, rendez-vous, accès. Bilingue FR / AR (RTL). */
@@ -427,6 +427,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   .a-draw{animation:none;stroke-dashoffset:0}
   .card,.btn,.cause,.vcard{transition:none}
 }
+/* Thèmes au choix (?theme=prestige | ?theme=nature), le thème par défaut est « clinique » */
+:root[data-skin="prestige"]{--bg:#f7f5f0;--surface:#fffdf9;--ink:#141c2e;--muted:#5d6475;--line:#e5e0d5;--accent:#1b2f5b;--accent-soft:#e6eaf3;--warm:#b8892f;--warm-soft:#f6ecd9;--stage:#101a33;--stage-2:#18254a;--gold:#c9a24a;--good:#2f7d5b;--f-display:"Playfair Display",Georgia,serif;--r:10px}
+:root[data-skin="nature"]{--bg:#f6f3ec;--surface:#fffdf8;--ink:#23302a;--muted:#62706a;--line:#e3ddd0;--accent:#4f7a5c;--accent-soft:#e3ece2;--warm:#c4673f;--warm-soft:#f7e6dc;--stage:#26372e;--stage-2:#30453a;--gold:#d79b4b;--good:#4f7a5c;--f-display:"Fraunces",Georgia,serif;--r:26px}
+@media (prefers-color-scheme:dark){:root[data-skin="prestige"]:not([data-theme="light"]){--bg:#0d1220;--surface:#151c2f;--ink:#ece8df;--muted:#a3a9b8;--line:#263049;--accent:#d2b066;--accent-ink:#151c2f;--accent-soft:#2b2a22;--warm:#c9a24a;--stage:#080c17;--stage-2:#121a2e}
+:root[data-skin="nature"]:not([data-theme="light"]){--bg:#141a16;--surface:#1c241f;--ink:#e8ece6;--muted:#a3b0a8;--line:#2d3a32;--accent:#8fbf98;--accent-ink:#13201a;--accent-soft:#223229;--warm:#e08a63;--stage:#0d130f;--stage-2:#18221c}}
+:root[data-skin="prestige"] .btn,:root[data-skin="prestige"] .lang,:root[data-skin="prestige"] .lang button{border-radius:6px}
+:root[data-skin="prestige"] .hero h1,:root[data-skin="prestige"] h2{font-weight:700;letter-spacing:-.01em}
+:root[data-skin="nature"] .hero h1,:root[data-skin="nature"] h2{font-weight:600;letter-spacing:-.01em}
+:root[lang="ar"][data-skin]{--f-display:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,sans-serif}
 </style>
 </head>
 <body>
@@ -1295,6 +1304,12 @@ document.getElementById("copyBtn").addEventListener("click", e => {
 })();
 
 /* ===== Démarrage ===== */
+(function(){
+  const t = new URLSearchParams(location.search).get("theme");
+  let k = t; if (!k) { try { k = localStorage.getItem("skin"); } catch(e) {} }
+  if (k === "prestige" || k === "nature") document.documentElement.dataset.skin = k;
+  if (t) { try { localStorage.setItem("skin", t); } catch(e) {} }
+})();
 (function(){
   let l = null;
   const q = new URLSearchParams(location.search).get("lang");
