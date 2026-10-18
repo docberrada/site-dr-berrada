@@ -94,7 +94,7 @@ header.top.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.08)}
 .top .wrap{display:flex;align-items:center;gap:12px;padding-block:12px;transition:padding .3s}
 header.top.scrolled .wrap{padding-block:8px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
-.logo{width:40px;height:40px;flex:none;border-radius:12px;overflow:hidden;background:var(--accent);border:2px solid var(--accent)}
+.logo{width:44px;height:44px;flex:none;border-radius:50%;overflow:hidden;background:#fff}
 .logo img{width:100%;height:100%;object-fit:cover;display:block}
 .brand b{font-family:var(--f-display);font-size:1.04rem;display:block;line-height:1.15;white-space:nowrap}
 .brand small{color:var(--muted);font-size:.78rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -436,6 +436,19 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 :root[data-skin="prestige"] .hero h1,:root[data-skin="prestige"] h2{font-weight:700;letter-spacing:-.01em}
 :root[data-skin="nature"] .hero h1,:root[data-skin="nature"] h2{font-weight:600;letter-spacing:-.01em}
 :root[lang="ar"][data-skin]{--f-display:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,sans-serif}
+/* En-tête du héros : mention bilingue, sous-titre des spécialités ; section cabinet */
+.langpill{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:6px 8px 6px 12px;font-weight:700;font-size:.85rem;margin-bottom:16px}
+.langpill button{border:0;background:var(--surface);color:var(--ink);font:600 .85rem var(--f-body);border-radius:999px;padding:4px 12px;cursor:pointer}
+.langpill button[lang="ar"]{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;font-size:.95rem}
+.langpill button:hover{background:var(--accent);color:var(--accent-ink)}
+.hsub{margin-top:16px;color:var(--ink);font-weight:600;font-size:1.05rem;max-width:56ch;line-height:1.6}
+.cab{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.cab .head{margin:0;position:sticky;top:100px}
+.cab-big{font-family:var(--f-display);font-size:1.35rem;line-height:1.4;margin-top:18px;color:var(--accent)}
+.cab-text{display:grid;gap:14px;color:var(--muted);font-size:1.04rem;max-width:62ch}
+.cab-text b{color:var(--ink)}
+.cab-promise{color:var(--ink);font-weight:600;border-inline-start:3px solid var(--warm);padding-inline-start:16px}
+@media (max-width:860px){.cab{grid-template-columns:1fr;gap:20px}.cab .head{position:static}}
 </style>
 </head>
 <body>
@@ -445,16 +458,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 <header class="top bleed" id="top">
   <div class="wrap">
     <a class="brand" href="#accueil">
-      <span class="logo"><img src="img/dr-berrada-logo.jpg" alt="" width="40" height="40"></span>
-      <span><b data-i="brand">Dr Hicham Berrada</b><small data-i="brand_sub">Diabète · Nutrition · Sommeil · Casablanca</small></span>
+      <span class="logo"><img src="img/logo-hb.png" alt="Logo HB" width="40" height="40"></span>
+      <span><b data-i="brand">Dr Hicham Berrada</b><small data-i="brand_sub">Cabinet des maladies métaboliques et du sommeil</small></span>
     </a>
     <nav class="links" id="nav">
+      <a href="#cabinet" data-i="nav_cab">Le cabinet</a>
+      <a href="#expertises" data-i="nav_exp">Expertises</a>
+      <a href="#parcours" data-i="nav_cv">Le médecin</a>
       <a href="#medias" data-i="nav_tv">Vu à la TV</a>
       <a href="#avis" data-i="nav_avis">Avis</a>
-      <a href="#insuline" data-i="nav_ins">Insuline</a>
-      <a href="#sommeil-fatigue" data-i="nav_sleep">Sommeil</a>
-      <a href="#parcours" data-i="nav_cv">Parcours</a>
-      <a href="#expertises" data-i="nav_exp">Expertises</a>
       <a class="btn" href="#rdv" data-i="nav_rdv">Rendez-vous</a>
     </nav>
     <div class="lang" role="group" aria-label="Langue / اللغة">
@@ -469,12 +481,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   <section class="hero" id="accueil">
     <div class="wrap hgrid">
       <div>
-        <p class="eyebrow in" data-i="h_eyebrow">Bienvenue au cabinet du Dr Berrada</p>
-        <h1 class="in d1" data-i="h_title">Le médecin du diabète, de la nutrition et du sommeil <em>que le Maroc a vu sur 2M.</em></h1>
-        <p class="ar-line in d2" dir="auto" data-i="h_arline">الدكتور برادة هشام · أخصائي النوم والتغذية والسكري</p>
+        <p class="langpill in"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span data-i="h_bil">Site en 2 langues</span><button type="button" data-lang="ar" lang="ar">عربي</button><button type="button" data-lang="fr">Français</button></p>
+        <h1 class="in d1" data-i="h_title">Centre des maladies métaboliques <em>et du sommeil</em></h1>
+        <p class="hsub in d2" data-i="h_sub">Diabète · Maladies du poids · Maladies du sommeil · Nutrition et alimentation · Maladies du cholestérol · Goutte</p>
         <div class="welcome in d3">
-          <p data-i="h_p1">Chère patiente, cher patient, soyez la bienvenue. Résistance à l'insuline, diabète, kilos qui ne partent pas, nuits sans sommeil, fatigue permanente : <b>ces problèmes sont souvent liés, et ils se soignent.</b></p>
-          <p data-i="h_p2">Formé à Bordeaux, Montpellier et Paris, j'ai exercé au CHU de Montpellier avant de m'installer à Casablanca. Je prends le temps de chercher la cause, d'expliquer vos résultats avec des mots simples et de vous suivre jusqu'au résultat.</p>
+          <p data-i="h_p1"><b>Bienvenue au cabinet du Docteur Berrada Hicham.</b></p>
+          <p data-i="h_p2">Une adresse unique, pour prendre en charge le diabète, les problèmes de poids, les troubles du sommeil et les maladies de la nutrition.</p>
         </div>
         <div class="cta-row in d4">
           <a class="btn" href="#rdv" data-i="h_cta1">Prendre rendez-vous</a>
@@ -493,6 +505,78 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
         <div><b>2M · MFM</b><span data-i="p2">invité à la télévision et à la radio</span></div>
         <div><b data-i="p3b">CHU Montpellier</b><span data-i="p3">ancien médecin attaché, formé en France</span></div>
         <div><b data-i="p4b">3 spécialités</b><span data-i="p4">diabète, nutrition, médecine du sommeil</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cabinet" class="bleed" style="background:var(--surface)">
+    <div class="wrap cab">
+      <div class="head rv" data-rv="left">
+        <p class="eyebrow" data-i="cab_eyebrow">Le cabinet</p>
+        <h2 data-i="cab_title">La médecine du mode de vie</h2>
+        <p class="cab-big" data-i="cab_1">Ces maladies, par leur chronicité, nécessitent un accompagnement dans le temps, une nouvelle hygiène de vie et un mode de vie plus sain !</p>
+      </div>
+      <div class="cab-text rv" data-rv="right">
+        <p data-i="cab_2">Notre méthode d'accompagnement et de prise en charge s'appuie sur de longues années d'expérience passées aux côtés de patients souffrant de ces problèmes de santé. Sa seule et unique devise consiste à apporter des solutions concrètes et des réponses claires à ces patients.</p>
+        <p data-i="cab_3">Au fil des années, elle a permis de contribuer à la naissance d'une nouvelle médecine qu'on pourrait intituler : <b>la médecine du mode de vie</b> !</p>
+        <p data-i="cab_4">Des soins médicaux aux changements des comportements, tous les traitements sont adaptés individuellement pour combler tous les besoins. C'est un lieu où l'on se soucie autant de votre santé que du bien-être physique et moral !</p>
+        <p data-i="cab_5">Les méthodes et les outils utilisés sont validés par les prestigieux centres de recherche étrangers, et font de ce centre l'une des références à Casablanca.</p>
+        <p class="cab-promise" data-i="cab_6">Vous offrir une bonne prise en charge, dans un cadre agréable, en présence d'une équipe à l'oreille attentive : tels sont nos engagements !</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="expertises">
+    <div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow" data-i="e_eyebrow">Domaines d'expertise</p>
+        <h2 data-i="e_title">Les expertises du cabinet</h2>
+        <p class="lead" data-i="e_lead">Cliquez sur un domaine pour savoir quand consulter et comment se passe la prise en charge.</p>
+      </div>
+      <div id="families"></div>
+    </div>
+  </section>
+
+
+  <section id="parcours" class="bleed" style="background:var(--surface)">
+    <div class="wrap cv">
+      <div>
+        <div class="head rv" style="margin-bottom:20px">
+          <p class="eyebrow" data-i="cv_eyebrow">Le médecin · Parcours</p>
+          <h2 data-i="cv_title">Formé dans les hôpitaux universitaires français</h2>
+          <p class="lead" data-i="cv_lead">Double spécialisation rare : diabétologie et nutrition d'un côté, médecine du sommeil de l'autre, avec une expérience hospitalière au CHU de Montpellier.</p>
+        </div>
+        <figure class="cv-photo rv" data-rv="zoom"><img src="img/faculte-bichat.jpg" alt="Faculté de médecine Xavier-Bichat, Paris" width="1200" height="675" loading="lazy" data-i-alt="cv_photo_alt"><figcaption><b data-i="cv_photo_t">Faculté de médecine Xavier-Bichat, Paris</b><span data-i="cv_photo_s">Diplôme d'études spécialisées du sommeil et de ses pathologies</span></figcaption></figure>
+        <div class="cities rv">
+          <span class="city"><i>BX</i><span data-i="city1">Bordeaux</span></span>
+          <span class="city"><i>MTP</i><span data-i="city2">Montpellier</span></span>
+          <span class="city"><i>PAR</i><span data-i="city3">Paris</span></span>
+          <span class="city"><i>CASA</i><span data-i="city4">Casablanca</span></span>
+        </div>
+      </div>
+      <div>
+        <div class="tl-group rv">
+          <h3 data-i="tl1_h">Diplômes</h3>
+          <ul class="timeline">
+            <li><b data-i="tl1_1b">Diplôme d'études spécialisées du sommeil et de ses pathologies</b><span data-i="tl1_1s">Faculté de médecine Xavier-Bichat, Paris</span></li>
+            <li><b data-i="tl1_2b">Diplôme d'études spécialisées de 3e cycle en diabétologie, nutrition et diététique médicale</b><span data-i="tl1_2s">Université de Montpellier 1</span></li>
+            <li><b data-i="tl1_3b">Docteur en médecine</b><span data-i="tl1_3s">Université de Montpellier 1</span></li>
+            <li><b data-i="tl1_4b">Études de médecine</b><span data-i="tl1_4s">Faculté de médecine de Bordeaux, Université Victor Segalen Bordeaux 2</span></li>
+            <li><b data-i="tl1_5b">Baccalauréat scientifique</b><span data-i="tl1_5s">Lycée Lyautey, académie de Bordeaux (France)</span></li>
+          </ul>
+        </div>
+        <div class="tl-group rv">
+          <h3 data-i="tl2_h">Expérience hospitalière · CHU de Montpellier</h3>
+          <ul class="timeline">
+            <li><b data-i="tl2_1b">Médecin attaché, service des maladies métaboliques et endocriniennes</b><span data-i="tl2_1s">Hôpital Lapeyronie, CHRU de Montpellier</span></li>
+            <li><b data-i="tl2_2b">Médecin attaché, centre d'exploration et de réadaptation des anomalies du métabolisme musculaire</b><span data-i="tl2_2s">Hôpital Lapeyronie, CHRU de Montpellier</span></li>
+            <li><b data-i="tl2_3b">Médecin attaché, service de neurologie</b><span data-i="tl2_3s">Hôpital Gui de Chauliac, CHU de Montpellier</span></li>
+            <li><b data-i="tl2_4b">Laboratoire du sommeil et centre de référence des maladies rares</b><span data-i="tl2_4s">Hôpital Gui de Chauliac, CHU de Montpellier</span></li>
+          </ul>
+        </div>
+        <div class="pubs rv" id="publications">
+          <article class="pub"><span class="yr ph">2025</span><div class="ti"><span class="ph" data-i="pub_t">Titre de la publication ou conférence</span><small><span class="ph" data-i="pub_s">Revue ou congrès, ville</span></small></div></article>
+        </div>
       </div>
     </div>
   </section>
@@ -533,19 +617,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
           <p class="quote rv" data-rv="right"><span data-i="quote">« Un bon sommeil, une bonne alimentation et une glycémie équilibrée se soignent ensemble. C'est le fil conducteur de mes consultations. »</span><small>Dr Hicham Berrada · <span class="ph" data-i="ph_validate">phrase à valider par le docteur</span></small></p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="avis">
-    <div class="wrap">
-      <div class="head rv">
-        <p class="eyebrow" data-i="a_eyebrow">Avis Google</p>
-        <h2 data-i="a_title">284 patients en parlent. Voici ce qu'ils racontent.</h2>
-      </div>
-      <div class="results" id="results"></div>
-      <div class="score rv"><span class="big" data-count="4.8" data-dec="1">4,8</span><div><div class="stars" style="font-size:1.2rem" aria-label="4,8/5">★★★★★</div><span class="note" data-i="a_score">284 avis sur la fiche Google du cabinet</span></div><a class="btn ghost" href="https://maps.google.com/?cid=11214821160782499541" target="_blank" rel="noopener" data-i="a_all">Lire tous les avis sur Google</a></div>
-      <p class="note rv" data-i="a_lang_note" hidden></p>
-      <div class="reviews" id="reviews"></div>
     </div>
   </section>
 
@@ -604,64 +675,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
     </div>
   </section>
 
-  <section id="parcours" class="bleed" style="background:var(--surface)">
-    <div class="wrap cv">
-      <div>
-        <div class="head rv" style="margin-bottom:20px">
-          <p class="eyebrow" data-i="cv_eyebrow">Le médecin · Parcours</p>
-          <h2 data-i="cv_title">Formé dans les hôpitaux universitaires français</h2>
-          <p class="lead" data-i="cv_lead">Double spécialisation rare : diabétologie et nutrition d'un côté, médecine du sommeil de l'autre, avec une expérience hospitalière au CHU de Montpellier.</p>
-        </div>
-        <figure class="cv-photo rv" data-rv="zoom"><img src="img/faculte-bichat.jpg" alt="Faculté de médecine Xavier-Bichat, Paris" width="1200" height="675" loading="lazy" data-i-alt="cv_photo_alt"><figcaption><b data-i="cv_photo_t">Faculté de médecine Xavier-Bichat, Paris</b><span data-i="cv_photo_s">Diplôme d'études spécialisées du sommeil et de ses pathologies</span></figcaption></figure>
-        <div class="cities rv">
-          <span class="city"><i>BX</i><span data-i="city1">Bordeaux</span></span>
-          <span class="city"><i>MTP</i><span data-i="city2">Montpellier</span></span>
-          <span class="city"><i>PAR</i><span data-i="city3">Paris</span></span>
-          <span class="city"><i>CASA</i><span data-i="city4">Casablanca</span></span>
-        </div>
-      </div>
-      <div>
-        <div class="tl-group rv">
-          <h3 data-i="tl1_h">Diplômes</h3>
-          <ul class="timeline">
-            <li><b data-i="tl1_1b">Diplôme d'études spécialisées du sommeil et de ses pathologies</b><span data-i="tl1_1s">Faculté de médecine Xavier-Bichat, Paris</span></li>
-            <li><b data-i="tl1_2b">Diplôme d'études spécialisées de 3e cycle en diabétologie, nutrition et diététique médicale</b><span data-i="tl1_2s">Université de Montpellier 1</span></li>
-            <li><b data-i="tl1_3b">Docteur en médecine</b><span data-i="tl1_3s">Université de Montpellier 1</span></li>
-            <li><b data-i="tl1_4b">Études de médecine</b><span data-i="tl1_4s">Faculté de médecine de Bordeaux, Université Victor Segalen Bordeaux 2</span></li>
-            <li><b data-i="tl1_5b">Baccalauréat scientifique</b><span data-i="tl1_5s">Lycée Lyautey, académie de Bordeaux (France)</span></li>
-          </ul>
-        </div>
-        <div class="tl-group rv">
-          <h3 data-i="tl2_h">Expérience hospitalière · CHU de Montpellier</h3>
-          <ul class="timeline">
-            <li><b data-i="tl2_1b">Médecin attaché, service des maladies métaboliques et endocriniennes</b><span data-i="tl2_1s">Hôpital Lapeyronie, CHRU de Montpellier</span></li>
-            <li><b data-i="tl2_2b">Médecin attaché, centre d'exploration et de réadaptation des anomalies du métabolisme musculaire</b><span data-i="tl2_2s">Hôpital Lapeyronie, CHRU de Montpellier</span></li>
-            <li><b data-i="tl2_3b">Médecin attaché, service de neurologie</b><span data-i="tl2_3s">Hôpital Gui de Chauliac, CHU de Montpellier</span></li>
-            <li><b data-i="tl2_4b">Laboratoire du sommeil et centre de référence des maladies rares</b><span data-i="tl2_4s">Hôpital Gui de Chauliac, CHU de Montpellier</span></li>
-          </ul>
-        </div>
-        <div class="tl-group rv">
-          <h3 data-i="tl3_h">Médias</h3>
-          <ul class="timeline">
-            <li><b data-i="tl3_1b">Invité de Sabahiyat sur 2M</b><span data-i="tl3_1s">Insomnie et troubles du sommeil, mars 2015</span></li>
-            <li><b data-i="tl3_2b">Invité de MFM Radio</b><span data-i="tl3_2s">Journée mondiale du diabète, novembre 2016</span></li>
-          </ul>
-        </div>
-        <div class="pubs rv" id="publications">
-          <article class="pub"><span class="yr ph">2025</span><div class="ti"><span class="ph" data-i="pub_t">Titre de la publication ou conférence</span><small><span class="ph" data-i="pub_s">Revue ou congrès, ville</span></small></div></article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="expertises">
+  <section id="avis">
     <div class="wrap">
       <div class="head rv">
-        <p class="eyebrow" data-i="e_eyebrow">Domaines d'expertise</p>
-        <h2 data-i="e_title">Les pages consacrées à mes expertises</h2>
-        <p class="lead" data-i="e_lead">Cliquez sur un domaine pour savoir quand consulter et comment se passe la prise en charge.</p>
+        <p class="eyebrow" data-i="a_eyebrow">Avis Google</p>
+        <h2 data-i="a_title">284 patients en parlent. Voici ce qu'ils racontent.</h2>
       </div>
-      <div id="families"></div>
+      <div class="results" id="results"></div>
+      <div class="score rv"><span class="big" data-count="4.8" data-dec="1">4,8</span><div><div class="stars" style="font-size:1.2rem" aria-label="4,8/5">★★★★★</div><span class="note" data-i="a_score">284 avis sur la fiche Google du cabinet</span></div><a class="btn ghost" href="https://maps.google.com/?cid=11214821160782499541" target="_blank" rel="noopener" data-i="a_all">Lire tous les avis sur Google</a></div>
+      <p class="note rv" data-i="a_lang_note" hidden></p>
+      <div class="reviews" id="reviews"></div>
     </div>
   </section>
 
@@ -739,13 +762,19 @@ const WHATSAPP = "212600000000";
 
 /* ===== Textes arabes (le français est lu directement dans la page) ===== */
 const AR = {
-  brand:"د. هشام برادة", brand_sub:"السكري · التغذية · النوم · الدار البيضاء",
-  nav_tv:"على التلفاز", nav_avis:"آراء المرضى", nav_ins:"الأنسولين", nav_sleep:"النوم", nav_cv:"المسار", nav_exp:"التخصصات", nav_rdv:"حجز موعد",
+  brand:"د. هشام برادة", brand_sub:"عيادة الأمراض الأيضية واضطرابات النوم", nav_cab:"العيادة", h_bil:"موقع بلغتين", h_sub:"السكري · أمراض الوزن · اضطرابات النوم · التغذية والأكل · أمراض الكوليسترول · النقرس",
+  cab_eyebrow:"العيادة", cab_title:"طب نمط الحياة", cab_1:"هذه الأمراض، لكونها مزمنة، تتطلب مرافقة على المدى الطويل، ونظافة حياة جديدة، ونمط عيش أكثر صحة!",
+  cab_2:"تعتمد طريقتنا في المرافقة والتكفل على سنوات طويلة من الخبرة إلى جانب المرضى الذين يعانون من هذه المشاكل الصحية. شعارها الوحيد هو تقديم حلول ملموسة وأجوبة واضحة لهؤلاء المرضى.",
+  cab_3:"ومع مرور السنوات، ساهمت في ميلاد طب جديد يمكن أن نسميه: <b>طب نمط الحياة</b>!",
+  cab_4:"من العلاجات الطبية إلى تغيير السلوكيات، كل العلاجات مكيّفة لكل شخص لتلبية جميع احتياجاته. إنه مكان نهتم فيه بصحتكم بقدر ما نهتم براحتكم الجسدية والنفسية!",
+  cab_5:"الطرق والأدوات المستعملة معتمدة من طرف مراكز بحث أجنبية مرموقة، وتجعل من هذا المركز أحد المراجع في الدار البيضاء.",
+  cab_6:"أن نقدم لكم تكفلًا جيدًا، في إطار مريح، بحضور فريق يحسن الإصغاء: تلك هي التزاماتنا!",
+  nav_tv:"على التلفاز", nav_avis:"آراء المرضى", nav_ins:"الأنسولين", nav_sleep:"النوم", nav_cv:"الطبيب", nav_exp:"التخصصات", nav_rdv:"حجز موعد",
   h_eyebrow:"مرحبًا بكم في عيادة الدكتور برادة",
-  h_title:"طبيب السكري والتغذية والنوم <em>الذي شاهده المغاربة على القناة الثانية.</em>",
+  h_title:"مركز الأمراض الأيضية <em>واضطرابات النوم</em>",
   h_arline:"Dr Hicham Berrada · Diabète, nutrition et sommeil",
-  h_p1:"عزيزتي المريضة، عزيزي المريض، مرحبًا بكم. مقاومة الأنسولين، السكري، الوزن الذي لا ينزل، الليالي بلا نوم، والتعب الدائم: <b>هذه المشاكل مترابطة في الغالب، ولها علاج.</b>",
-  h_p2:"تكوّنت في بوردو ومونبلييه وباريس، وعملت في المستشفى الجامعي بمونبلييه قبل أن أستقر في الدار البيضاء. آخذ الوقت الكافي للبحث عن السبب، وشرح نتائجكم بكلمات بسيطة، ومتابعتكم حتى تحقيق النتيجة.",
+  h_p1:"<b>مرحبًا بكم في عيادة الدكتور برادة هشام.</b>",
+  h_p2:"عنوان واحد للتكفل بالسكري، ومشاكل الوزن، واضطرابات النوم، وأمراض التغذية.",
   h_cta1:"احجز موعدًا", h_cta2:"شاهده على القناة الثانية",
   h_photo_alt:"الدكتور هشام برادة في عيادته بالدار البيضاء", h_photo_cap:"الدكتور هشام برادة، في عيادته بالدار البيضاء",
   h_float_g:"رأي على Google", h_float_tv1:"ضيف برنامج", h_float_tv2:"صباحيات",
@@ -787,7 +816,7 @@ const AR = {
   tl2_4b:"مختبر النوم والمركز المرجعي للأمراض النادرة", tl2_4s:"مستشفى غي دو شولياك، المستشفى الجامعي بمونبلييه",
   tl3_h:"الإعلام", tl3_1b:"ضيف برنامج صباحيات على القناة الثانية", tl3_1s:"الأرق واضطرابات النوم، مارس 2015", tl3_2b:"ضيف إذاعة MFM", tl3_2s:"اليوم العالمي للسكري، نونبر 2016",
   pub_t:"عنوان المنشور أو المحاضرة", pub_s:"المجلة أو المؤتمر، المدينة",
-  e_eyebrow:"مجالات الخبرة", e_title:"الصفحات المخصصة لتخصصاتي", e_lead:"اضغط على أي مجال لتعرف متى يجب الاستشارة وكيف يتم التكفل.",
+  e_eyebrow:"مجالات الخبرة", e_title:"تخصصات العيادة", e_lead:"اضغط على أي مجال لتعرف متى يجب الاستشارة وكيف يتم التكفل.",
   r_eyebrow:"اتصلوا بنا", r_title:"حجز موعد", r_lead:"املأ الاستمارة: يتم تحضير طلبك كرسالة واتساب جاهزة للإرسال إلى العيادة. يمكنك أيضًا الاتصال مباشرة.",
   r_tel:"الهاتف", r_hours:"أوقات العمل", r_h1:"الإثنين – الجمعة", r_h1v:"ابتداءً من 9:00", r_tbc:"يُؤكَّد لاحقًا", r_tbc2:"يُؤكَّد لاحقًا", r_h2:"السبت", r_h3:"الأحد", r_closed:"مغلق",
   f_name:"الاسم الكامل", f_tel:"الهاتف", f_motif:"سبب الاستشارة", f_type:"نوع الزيارة", f_when:"الوقت المفضل", f_msg:"رسالة (اختياري)", f_submit:"حضّر طلبي",
@@ -1220,7 +1249,7 @@ function setLang(l, initial){
   renderHome();
   if (!initial) { if (!detail.hidden) route(); else document.title = U().title; setupReveal(); }
 }
-document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+document.querySelectorAll("button[data-lang]").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
 /* ===== Menu mobile ===== */
 const nav = document.getElementById("nav"), burger = document.getElementById("burger");
