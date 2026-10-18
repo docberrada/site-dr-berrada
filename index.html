@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -13,7 +13,7 @@
 <style>
 /* Mise en page : la preuve d'abord. Héros avec photo 2M + bandeau de preuves, plateau média sombre, avis et résultats, thèmes phares avec comparateurs avant/après, parcours, expertises, rendez-vous, accès. Bilingue FR / AR (RTL). */
 :root{
-  --bg:#f5f7f8; --surface:#ffffff; --ink:#122129; --muted:#566a73; --line:#dce4e7;
+  --bg:#ffffff; --surface:#ffffff; --ink:#122129; --muted:#566a73; --line:#dce4e7;
   --accent:#0d7a78; --accent-ink:#ffffff; --accent-soft:#e0f0ef;
   --warm:#d6533a; --warm-soft:#fbe8e3;
   --stage:#0f1d24; --stage-2:#172a33; --stage-ink:#eef4f6; --stage-muted:#9fb5bd;
@@ -126,8 +126,8 @@ nav.links .btn{color:#fff;padding:9px 16px;margin-inline-start:6px}
 /* Héros */
 .hero{padding-block:44px 28px}
 .hgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(2.1rem,5.6vw,3.8rem);font-weight:800;letter-spacing:-.025em}
-.hero h1 em{font-style:normal;color:var(--accent)}
+.hero h1{font-size:clamp(2.1rem,5.6vw,3.8rem);font-weight:800;letter-spacing:-.025em;color:#27276f}
+.hero h1 em{font-style:normal;color:#27276f}
 .ar-line{font-size:1.1rem;color:var(--muted);margin-top:10px;font-family:"IBM Plex Sans Arabic",Tahoma,serif}
 .welcome{margin-top:18px;max-width:56ch;color:var(--muted);font-size:1.08rem;display:grid;gap:10px}
 .welcome b{color:var(--ink)}
@@ -441,7 +441,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 .langpill button{border:0;background:var(--surface);color:var(--ink);font:600 .85rem var(--f-body);border-radius:999px;padding:4px 12px;cursor:pointer}
 .langpill button[lang="ar"]{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;font-size:.95rem}
 .langpill button:hover{background:var(--accent);color:var(--accent-ink)}
-.hsub{margin-top:16px;color:var(--ink);font-weight:600;font-size:1.05rem;max-width:56ch;line-height:1.6}
+.hsub{margin-top:16px;color:#2f86b8;font-weight:600;font-size:1.05rem;max-width:56ch;line-height:1.6}
 .cab{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
 .cab .head{margin:0;position:sticky;top:100px}
 .cab-big{font-family:var(--f-display);font-size:1.35rem;line-height:1.4;margin-top:18px;color:var(--accent)}
@@ -1459,10 +1459,9 @@ document.getElementById("copyBtn").addEventListener("click", e => {
 
 /* ===== Démarrage ===== */
 (function(){
-  const t = new URLSearchParams(location.search).get("theme");
-  let k = t; if (!k) { try { k = localStorage.getItem("skin"); } catch(e) {} }
-  if (k === "prestige" || k === "nature") document.documentElement.dataset.skin = k;
-  if (t) { try { localStorage.setItem("skin", t); } catch(e) {} }
+  /* Thème Clinique sur fond blanc, choisi par le cabinet le 18/10 : on efface un ancien choix de thème */
+  document.documentElement.dataset.theme = "light";
+  try { localStorage.removeItem("skin"); } catch(e) {}
 })();
 (function(){
   let l = null;
