@@ -459,6 +459,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 .rev .src{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px;font-size:.82rem;color:var(--muted)}
 .rev .src a{font-weight:600;text-decoration:none}
 @media (max-width:860px){.proofbox{grid-template-columns:1fr}}
+/* Essai « couleurs du logo » (bleu marine + bleu clair), visible seulement avec ?theme=logo, en attente de décision */
+:root[data-skin="logo"]{--ink:#171c3a;--muted:#5a6182;--line:#dfe3ee;--accent:#1f78ad;--accent-soft:#e3f0f8;--warm:#27276f;--warm-soft:#e7e7f3;--stage:#1a1a52;--stage-2:#25256b;--stage-ink:#eef1fb;--stage-muted:#aab2d8;--good:#1f78ad;
+  --t-blue:#e3f0f8;--t-blue-i:#1f78ad;--t-green:#e7e7f3;--t-green-i:#27276f;--t-amber:#e3f0f8;--t-amber-i:#1f78ad;--t-violet:#e7e7f3;--t-violet-i:#27276f;--t-rose:#e3f0f8;--t-rose-i:#1f78ad;--shadow:0 1px 2px rgba(23,28,58,.05),0 10px 30px rgba(23,28,58,.08)}
 /* ===== Version téléphone (propositions validées le 18/10) ===== */
 .m-only{display:none}
 .faqw{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:start}
@@ -1461,6 +1464,7 @@ document.getElementById("copyBtn").addEventListener("click", e => {
 (function(){
   /* Thème Clinique sur fond blanc, choisi par le cabinet le 18/10 : on efface un ancien choix de thème */
   document.documentElement.dataset.theme = "light";
+  if (new URLSearchParams(location.search).get("theme") === "logo") document.documentElement.dataset.skin = "logo";
   try { localStorage.removeItem("skin"); } catch(e) {}
 })();
 (function(){
