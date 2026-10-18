@@ -1149,14 +1149,19 @@ document.querySelectorAll("[data-yt]").forEach(a => {
   const id = a.dataset.yt;
   a.style.backgroundImage = `linear-gradient(135deg,rgba(15,29,36,.25),rgba(15,29,36,.25)),url(https://i.ytimg.com/vi/${id}/hqdefault.jpg),linear-gradient(135deg,#1d3440,#0b161c)`;
   if (!canEmbed) return;
-  a.addEventListener("click", e => {
-    e.preventDefault();
-    /* on remplace la vignette par un vrai lecteur : rien ne reste au-dessus, le doigt atteint les boutons YouTube */
+  /* le vrai lecteur YouTube est installé avant que le visiteur arrive sur la vidéo : un seul toucher sur son bouton lecture suffit */
+  const swap = auto => {
+    if (!a.isConnected) return;
     const box = document.createElement("div");
     box.className = "yt-frame";
-    box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="Dr Berrada" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?playsinline=1&rel=0&modestbranding=1${auto?"&autoplay=1":""}" title="Dr Berrada" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
     a.replaceWith(box);
-  });
+  };
+  a.addEventListener("click", e => { e.preventDefault(); swap(true); });
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { io.disconnect(); swap(false); } }, {rootMargin:"800px 0px"});
+    io.observe(a);
+  }
 });
 
 /* ===== Pages détail (adresse #identifiant) ===== */
