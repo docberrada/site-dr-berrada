@@ -448,6 +448,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 :root[lang="ar"][data-skin]{--f-display:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,sans-serif}
 /* En-tête du héros : mention bilingue, sous-titre des spécialités ; section cabinet */
 .langpill{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:6px 8px 6px 12px;font-weight:700;font-size:.85rem;margin-bottom:16px}
+.langpill .bil{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}.langpill .bil [lang="ar"]{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;font-size:.95rem}.langpill .sep{opacity:.5}
+@media (max-width:420px){.langpill{gap:5px;padding:5px 6px 5px 10px;font-size:.76rem}.langpill .bil{gap:4px}.langpill .bil [lang="ar"],.langpill button[lang="ar"]{font-size:.84rem!important}.langpill button{font-size:.76rem!important;padding:3px 9px!important}.langpill svg{width:14px;height:14px}}
 .langpill button{border:0;background:var(--surface);color:var(--ink);font:600 .85rem var(--f-body);border-radius:999px;padding:4px 12px;cursor:pointer}
 .langpill button[lang="ar"]{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;font-size:.95rem}
 .langpill button:hover{background:var(--accent);color:var(--accent-ink)}
@@ -563,7 +565,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   <section class="hero" id="accueil">
     <div class="wrap hgrid">
       <div>
-        <p class="langpill in"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span data-i="h_bil">Site en 2 langues</span><button type="button" data-lang="ar" lang="ar">عربي</button><button type="button" data-lang="fr">Français</button></p>
+        <p class="langpill in"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span class="bil"><span lang="fr">Site en 2 langues</span><span class="sep">·</span><span lang="ar" dir="rtl">موقع بلغتين</span></span><button type="button" data-lang="ar" lang="ar">عربي</button><button type="button" data-lang="fr">Français</button></p>
         <h1 class="in d1" data-i="h_title">Centre des maladies métaboliques <em>et du sommeil</em></h1>
         <p class="hsub in d2" data-i="h_sub"><span>Diabète</span><span>Maladies du poids</span><span>Maladies du sommeil</span><span>Nutrition et alimentation</span><span>Maladies du cholestérol</span><span>Goutte</span></p>
         <div class="welcome in d3">
