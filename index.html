@@ -125,7 +125,13 @@ nav.links .btn{color:#fff;padding:9px 16px;margin-inline-start:6px}
   nav.links a{padding:12px}
   nav.links .btn{margin:8px 0 0}
 }
-@media (max-width:420px){.brand small{display:none}.logo{width:36px;height:36px}.brand{gap:8px}.brand b{font-size:clamp(.8rem,3.8vw,1.04rem)}}
+/* Téléphone : un seul bouton de langue (celle vers laquelle on bascule) et sous-titre affiché en entier sur deux lignes */
+@media (max-width:760px){
+  .lang{padding:2px}.lang button[aria-pressed="true"]{display:none}.lang button{padding:6px 12px;background:var(--accent-soft);color:var(--accent)}
+  .brand small{white-space:normal;overflow:visible;text-overflow:clip;font-size:.72rem;line-height:1.25;margin-top:2px;text-wrap:balance}
+  .brand>span{overflow:visible}
+}
+@media (max-width:420px){.logo{width:36px;height:36px}.brand{gap:8px}.brand b{font-size:clamp(.8rem,3.8vw,1.04rem)}.brand small{font-size:clamp(.62rem,2.9vw,.72rem)}}
 
 /* Héros */
 .hero{padding-block:44px 28px}
