@@ -449,6 +449,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 .cab-text b{color:var(--ink)}
 .cab-promise{color:var(--ink);font-weight:600;border-inline-start:3px solid var(--warm);padding-inline-start:16px}
 @media (max-width:860px){.cab{grid-template-columns:1fr;gap:20px}.cab .head{position:static}}
+/* Témoignages : bloc de preuve Google + cartes au format Google */
+.proofbox{display:grid;grid-template-columns:auto 1fr auto;gap:18px 28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px 24px;margin-bottom:18px}
+.pscore{display:flex;align-items:center;gap:14px}
+.pscore .big{font:800 2.8rem/1 "Bricolage Grotesque",sans-serif}
+.proofbox .why{color:var(--muted);margin:0;max-width:56ch}
+.proofbox .btn{white-space:nowrap}
+.gg{width:22px;height:22px;flex:none}
+.rev .src{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px;font-size:.82rem;color:var(--muted)}
+.rev .src a{font-weight:600;text-decoration:none}
+@media (max-width:860px){.proofbox{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -466,7 +476,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
       <a href="#expertises" data-i="nav_exp">Expertises</a>
       <a href="#parcours" data-i="nav_cv">Le médecin</a>
       <a href="#medias" data-i="nav_tv">Vu à la TV</a>
-      <a href="#avis" data-i="nav_avis">Avis</a>
+      <a href="#avis" data-i="nav_avis">Témoignages</a>
       <a class="btn" href="#rdv" data-i="nav_rdv">Rendez-vous</a>
     </nav>
     <div class="lang" role="group" aria-label="Langue / اللغة">
@@ -678,11 +688,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   <section id="avis">
     <div class="wrap">
       <div class="head rv">
-        <p class="eyebrow" data-i="a_eyebrow">Avis Google</p>
-        <h2 data-i="a_title">284 patients en parlent. Voici ce qu'ils racontent.</h2>
+        <p class="eyebrow" data-i="a_eyebrow">Témoignages</p>
+        <h2 data-i="a_title">Votre confiance, notre engagement</h2>
+        <p class="lead" data-i="a_lead">Découvrez les retours d'expérience des patients qui nous font confiance pour leur accompagnement médical.</p>
       </div>
       <div class="results" id="results"></div>
-      <div class="score rv"><span class="big" data-count="4.8" data-dec="1">4,8</span><div><div class="stars" style="font-size:1.2rem" aria-label="4,8/5">★★★★★</div><span class="note" data-i="a_score">284 avis sur la fiche Google du cabinet</span></div><a class="btn ghost" href="https://maps.google.com/?cid=11214821160782499541" target="_blank" rel="noopener" data-i="a_all">Lire tous les avis sur Google</a></div>
+      <div class="proofbox rv">
+        <div class="pscore"><span class="big" data-count="4.8" data-dec="1">4,8</span><div><div class="stars" style="font-size:1.2rem" aria-label="4,8/5">★★★★★</div><span class="note" data-i="a_score">284 avis sur Google</span></div></div>
+        <p class="why" data-i="a_why">Avis authentiques de patients, publiés avec respect de leur confidentialité.</p>
+        <a class="btn ghost" href="https://maps.google.com/?cid=11214821160782499541" target="_blank" rel="noopener"><svg class="gg" viewBox="0 0 48 48" aria-label="Google"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.2z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9.1H4.4v5.7C8 41.1 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.7 28.2c-.4-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2v-5.7H4.4C2.9 17.1 2 20.4 2 24s.9 6.9 2.4 9.9l7.3-5.7z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 6.9 4.4 14.1l7.3 5.7c1.7-5.2 6.6-9.1 12.3-9.1z"/></svg><span data-i="a_all">Lire les 284 avis sur Google</span></a>
+      </div>
       <p class="note rv" data-i="a_lang_note" hidden></p>
       <div class="reviews" id="reviews"></div>
     </div>
@@ -769,7 +784,7 @@ const AR = {
   cab_4:"من العلاجات الطبية إلى تغيير السلوكيات، كل العلاجات مكيّفة لكل شخص لتلبية جميع احتياجاته. إنه مكان نهتم فيه بصحتكم بقدر ما نهتم براحتكم الجسدية والنفسية!",
   cab_5:"الطرق والأدوات المستعملة معتمدة من طرف مراكز بحث أجنبية مرموقة، وتجعل من هذا المركز أحد المراجع في الدار البيضاء.",
   cab_6:"أن نقدم لكم تكفلًا جيدًا، في إطار مريح، بحضور فريق يحسن الإصغاء: تلك هي التزاماتنا!",
-  nav_tv:"على التلفاز", nav_avis:"آراء المرضى", nav_ins:"الأنسولين", nav_sleep:"النوم", nav_cv:"الطبيب", nav_exp:"التخصصات", nav_rdv:"حجز موعد",
+  nav_tv:"على التلفاز", nav_avis:"شهادات", nav_ins:"الأنسولين", nav_sleep:"النوم", nav_cv:"الطبيب", nav_exp:"التخصصات", nav_rdv:"حجز موعد",
   h_eyebrow:"مرحبًا بكم في عيادة الدكتور برادة",
   h_title:"مركز الأمراض الأيضية <em>واضطرابات النوم</em>",
   h_arline:"Dr Hicham Berrada · Diabète, nutrition et sommeil",
@@ -786,7 +801,7 @@ const AR = {
   v1_t1:"بُثّ يوم 10 مارس 2015", v1_t2:"طب النوم", v1_t3:"أكثر من 5700 مشاهدة",
   v2_t:"اليوم العالمي للسكري، على المباشر", v2_p:"ساعة من أسئلة المستمعين: السكري، الأنسولين، التغذية والنوم.", v2_t1:"نونبر 2016", v2_t2:"السكري",
   quote:"« النوم الجيد والتغذية السليمة وسكر الدم المتوازن تُعالَج معًا. هذا هو الخيط الناظم لاستشاراتي. »", ph_validate:"جملة يجب أن يصادق عليها الطبيب",
-  a_eyebrow:"آراء Google", a_title:"284 مريضًا يتحدثون عنه. هذا ما يحكونه.", a_score:"284 رأيًا على صفحة العيادة في Google", a_all:"اقرأ كل الآراء على Google",
+  a_eyebrow:"شهادات", a_title:"ثقتكم، التزامنا", a_lead:"اكتشفوا تجارب المرضى الذين يثقون بنا في مرافقتهم الطبية.", a_score:"284 رأيًا على Google", a_why:"آراء حقيقية لمرضى، منشورة مع احترام خصوصيتهم.", a_all:"اقرأ 284 رأيًا على Google",
   a_lang_note:"آراء المرضى معروضة كما كُتبت على Google، باللغة الفرنسية.",
   i_eyebrow:"موضوع رئيسي · مقاومة الأنسولين", i_title:"تأكل قليلًا، ومع ذلك يزداد وزنك؟",
   i_p:"عندما تقاوم الخلايا الأنسولين، يبقى السكر في الدم بدل أن يدخل إلى الخلايا ليمنحها الطاقة. النتيجة: تعب بعد الأكل، بطن يكبر، رغبة شديدة في السكريات، وخطر الإصابة بالسكري يرتفع في صمت.",
@@ -828,9 +843,9 @@ const AR = {
 const UI = {
   fr:{ before:"Avant", after:"Après", all:"Toutes les expertises", when:"Quand consulter ?", care:"La prise en charge au cabinet", disclaimer:"Ces informations sont générales et ne remplacent pas l'avis de votre médecin.",
        consult:"Consulter le Dr Berrada", motif:"Motif :", ask:"Demander un rendez-vous", trust:"<b>4,8/5</b> sur 284 avis Google · Vu sur 2M", others:"Autres expertises",
-       detailHint:"Faites glisser le curseur pour comparer avant et après traitement.", other:"Autre", otherMotif:"Autre motif", gReview:"Avis Google",
+       detailHint:"Faites glisser le curseur pour comparer avant et après traitement.", other:"Autre", otherMotif:"Autre motif", gReview:"Publié sur Google", seeG:"Voir sur Google",
        types:["Première consultation","Consultation de suivi","Examen du sommeil","Impédancemétrie"], whens:["Peu importe","Matin","Après-midi","Samedi matin"],
-       resNote:"Résultats racontés par des patients dans leurs avis Google. Chaque cas est différent.", resBy:"Avis Google de", more:"Lire la suite", less:"Réduire",
+       resNote:"Résultats racontés par des patients dans leurs avis Google. Chaque cas est différent.", resBy:"Témoignage Google de", more:"Lire la suite", less:"Réduire",
        namePh:"Ex. Salma Bennani", msgPh:"Précisez si besoin : analyses récentes, traitement en cours…",
        wa:(n,t,m,ty,w,msg)=>`Bonjour, je souhaite prendre rendez-vous avec le Dr Berrada.\nNom : ${n}\nTéléphone : ${t}\nMotif : ${m}\nType : ${ty}\nMoment souhaité : ${w}`+(msg?`\nMessage : ${msg}`:""),
        copied:"Copié", batBad:"Énergie 20 %", batGood:"Énergie 90 %", sayBad:"Nuit blanche, réveil épuisé", sayGood:"Sommeil profond, réveil reposé",
@@ -839,7 +854,7 @@ const UI = {
        title:"Dr Hicham Berrada" },
   ar:{ before:"قبل", after:"بعد", all:"كل التخصصات", when:"متى يجب الاستشارة؟", care:"التكفل في العيادة", disclaimer:"هذه معلومات عامة ولا تعوّض رأي طبيبك.",
        consult:"استشر الدكتور برادة", motif:"السبب:", ask:"اطلب موعدًا", trust:"<b>4,8/5</b> من 284 رأيًا على Google · شوهد على القناة الثانية", others:"تخصصات أخرى",
-       detailHint:"اسحب المؤشر للمقارنة قبل العلاج وبعده.", other:"أخرى", otherMotif:"سبب آخر", gReview:"رأي على Google",
+       detailHint:"اسحب المؤشر للمقارنة قبل العلاج وبعده.", other:"أخرى", otherMotif:"سبب آخر", gReview:"منشور على Google", seeG:"شاهده على Google",
        types:["استشارة أولى","استشارة متابعة","فحص النوم","تحليل تركيبة الجسم"], whens:["لا يهم","صباحًا","بعد الزوال","السبت صباحًا"],
        resNote:"نتائج يحكيها المرضى في آرائهم على Google. كل حالة مختلفة.", resBy:"رأي على Google من", more:"اقرأ المزيد", less:"إخفاء",
        namePh:"مثال: سلمى بناني", msgPh:"إن أمكن: تحاليل حديثة، علاج حالي…",
@@ -1142,6 +1157,8 @@ function mountBA(el){
 }
 
 /* ===== Rendu des parties générées ===== */
+const GMAPS = "https://maps.google.com/?cid=11214821160782499541";
+const GLOGO = '<svg class="gg" viewBox="0 0 48 48" aria-label="Google"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.2z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9.1H4.4v5.7C8 41.1 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.7 28.2c-.4-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2v-5.7H4.4C2.9 17.1 2 20.4 2 24s.9 6.9 2.4 9.9l7.3-5.7z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 6.9 4.4 14.1l7.3 5.7c1.7-5.2 6.6-9.1 12.3-9.1z"/></svg>';
 const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const chev = '<svg class="go flip" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg>';
 function renderHome(){
@@ -1163,8 +1180,10 @@ function renderHome(){
   const fill = (id, arr) => { const s = document.getElementById(id), i = s.selectedIndex; s.innerHTML = arr.map(o => `<option>${o}</option>`).join(""); if (i > 0) s.selectedIndex = i; };
   fill("f-type", u.types); fill("f-when", u.whens);
   document.getElementById("reviews").innerHTML = REVIEWS.map(r => `
-    <article class="rev rv"><div class="who"><span class="av ${r.c}">${r.n[0]}</span><div><b><bdi>${r.n}</bdi></b><div class="stars" style="font-size:.85rem">★★★★★</div></div></div>
-    <p class="clamp" lang="fr" dir="ltr">« ${r.t} »</p><button class="more" type="button" hidden>${u.more}</button><small>${r.d[LANG==="ar"?1:0]} · ${u.gReview}</small></article>`).join("");
+    <article class="rev rv"><div class="who"><span class="av ${r.c}">${r.n[0]}</span><div style="flex:1;min-width:0"><b><bdi>${r.n}</bdi></b><small style="display:block">${r.d[LANG==="ar"?1:0]}</small></div>${GLOGO}</div>
+    <div class="stars" style="font-size:.9rem">★★★★★</div>
+    <p class="clamp" lang="fr" dir="ltr">« ${r.t} »</p><button class="more" type="button" hidden>${u.more}</button>
+    <div class="src"><span>${u.gReview}</span><a href="${r.u||GMAPS}" target="_blank" rel="noopener">${u.seeG} ↗</a></div></article>`).join("");
   document.querySelectorAll(".rev").forEach(a => {
     const p = a.querySelector(".clamp"), b = a.querySelector(".more");
     if (p.scrollHeight > p.clientHeight + 4) { b.hidden = false; b.onclick = () => { const o = p.classList.toggle("open"); b.textContent = o ? U().less : U().more; }; }
