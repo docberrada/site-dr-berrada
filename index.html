@@ -391,6 +391,8 @@ textarea{min-height:84px;resize:vertical}
 
 footer{border-top:1px solid var(--line);padding-block:28px 100px;color:var(--muted);font-size:.88rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+.ft-id{display:grid;gap:4px;justify-items:start}.ft-addr{white-space:nowrap;font-size:clamp(.78rem,3.6vw,.88rem)}
+.ft-tel{display:inline-flex;align-items:center;gap:8px;margin-top:4px;padding:8px 14px;border:1.5px solid var(--line);border-radius:999px;color:var(--ink);font-weight:700;text-decoration:none;background:var(--surface)}.ft-tel svg{color:var(--accent)}
 
 /* Page détail */
 .detail{padding-block:28px 64px}
@@ -840,7 +842,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 
 <footer class="bleed">
   <div class="wrap">
-    <span><span data-i="ft1">© Cabinet du Dr Hicham Berrada · 119 Av. Mohamed Bouziane, Casablanca</span> · <span class="num">05 22 56 37 38</span></span>
+    <span class="ft-id"><span data-i="ft1">© Cabinet du Dr Hicham Berrada</span><span class="ft-addr" data-i="ft_addr">119 Av. Mohamed Bouziane, Casablanca</span><a class="ft-tel num" href="tel:+212522563738"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><bdi dir="ltr">05 22 56 37 38</bdi></a></span>
     <span data-i="ft2">Les informations de ce site ne remplacent pas une consultation médicale.</span>
   </div>
 </footer>
@@ -918,7 +920,7 @@ const AR = {
   faq_ph1:"الجواب ستكتبه العيادة", faq_ph2:"الجواب ستكتبه العيادة", faq_ph3:"الجواب ستكتبه العيادة", faq_ph4:"الجواب ستكتبه العيادة", faq_ph5:"الجواب ستكتبه العيادة",
   mb_call:"اتصل", mb_back:"اتصلوا بي", r_mail:"البريد الإلكتروني", mb_go:"الطريق", l_gm:"خرائط Google", l_acc1:"عمارة فرحتين 6، الطابق الثالث", l_acc2:"يوجد مصعد",
   l_eyebrow:"العنوان", l_title:"الوصول إلى العيادة", l_addr1:"119، شارع محمد بوزيان", l_addr2:"عمارة فرحتين 6، الطابق الثالث · الدار البيضاء", l_btn:"افتح في خرائط Google",
-  ft1:"© عيادة الدكتور هشام برادة · 119 شارع محمد بوزيان، الدار البيضاء", ft2:"المعلومات الواردة في هذا الموقع لا تعوّض الاستشارة الطبية."
+  ft1:"© عيادة الدكتور هشام برادة", ft_addr:"119 شارع محمد بوزيان، الدار البيضاء", ft2:"المعلومات الواردة في هذا الموقع لا تعوّض الاستشارة الطبية."
 };
 /* Textes générés par le script, dans les deux langues */
 const UI = {
