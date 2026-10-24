@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": ["Physician", "MedicalClinic"], "name": "Dr Hicham Berrada", "alternateName": ["Cabinet du Dr Hicham Berrada", "Centre des maladies métaboliques et du sommeil"], "description": "Diabétologue endocrinologue, nutritionniste et médecin du sommeil à Casablanca.", "url": "https://www.hichamberrada.ma/", "image": "https://www.hichamberrada.ma/img/dr-berrada.jpg", "logo": "https://www.hichamberrada.ma/img/logo-hb.png", "medicalSpecialty": ["Endocrine", "DietNutrition", "SleepMedicine"], "knowsAbout": ["Diabète", "Endocrinologie", "Obésité", "Nutrition", "Thyroïde", "Cholestérol", "Apnée du sommeil", "Insomnie", "Insulinothérapie fonctionnelle"], "telephone": "+212522563738", "email": "Cabinethberrada@gmail.com", "address": {"@type": "PostalAddress", "streetAddress": "119, Avenue Mohamed Bouziane, Immeuble Farhatine 6, 3e étage", "addressLocality": "Casablanca", "addressCountry": "MA"}, "geo": {"@type": "GeoCoordinates", "latitude": 33.5622016, "longitude": -7.5595299}, "hasMap": "https://maps.google.com/?cid=11214821160782499541", "areaServed": "Casablanca", "availableLanguage": ["fr", "ar"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": ["Physician", "MedicalClinic"], "name": "Dr Hicham Berrada", "alternateName": ["Cabinet du Dr Hicham Berrada", "Centre des maladies métaboliques et du sommeil"], "description": "Diabétologue endocrinologue, nutritionniste et médecin du sommeil à Casablanca.", "url": "https://www.hichamberrada.ma/", "image": "https://www.hichamberrada.ma/img/dr-berrada.jpg", "logo": "https://www.hichamberrada.ma/img/logo-hb.png", "medicalSpecialty": ["Endocrine", "DietNutrition", "SleepMedicine"], "knowsAbout": ["Diabète", "Endocrinologie", "Obésité", "Nutrition", "Thyroïde", "Cholestérol", "Apnée du sommeil", "Insomnie", "Syndrome des jambes sans repos", "Insulinothérapie fonctionnelle"], "telephone": "+212522563738", "email": "Cabinethberrada@gmail.com", "address": {"@type": "PostalAddress", "streetAddress": "119, Avenue Mohamed Bouziane, Immeuble Farhatine 6, 3e étage", "addressLocality": "Casablanca", "addressCountry": "MA"}, "geo": {"@type": "GeoCoordinates", "latitude": 33.5622016, "longitude": -7.5595299}, "hasMap": "https://maps.google.com/?cid=11214821160782499541", "areaServed": "Casablanca", "availableLanguage": ["fr", "ar"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00"}]}</script>
 <style>
 /* Mise en page : la preuve d'abord. Héros avec photo 2M + bandeau de preuves, plateau média sombre, avis et résultats, thèmes phares avec comparateurs avant/après, parcours, expertises, rendez-vous, accès. Bilingue FR / AR (RTL). */
 :root{
@@ -477,7 +477,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 .langpill button:hover{background:var(--accent);color:var(--accent-ink)}
 .hsub{margin-top:16px;color:#2f86b8;font-weight:600;font-size:1.05rem;max-width:56ch;line-height:1.6}
 .cab{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
-.cab .head{margin:0;position:sticky;top:100px}
+.cab .head{margin:0}
+.cab-photo{margin:22px 0 0;max-width:440px}
+.cab-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 60%;border-radius:22px;box-shadow:var(--shadow)}
+.cab-photo figcaption{margin-top:8px;font-size:.88rem;color:var(--muted)}
 .cab-big{font-family:var(--f-display);font-size:1.35rem;line-height:1.4;margin-top:18px;color:var(--accent)}
 .cab-text{display:grid;gap:14px;color:var(--muted);font-size:1.04rem;max-width:62ch}
 .cab-text b{color:var(--ink)}
@@ -619,6 +622,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
         <p class="eyebrow" data-i="cab_eyebrow">Le cabinet</p>
         <h2 data-i="cab_title">La médecine du mode de vie</h2>
         <p class="cab-big" data-i="cab_1">Ces maladies, par leur chronicité, nécessitent un accompagnement dans le temps, une nouvelle hygiène de vie et un mode de vie plus sain !</p>
+        <figure class="cab-photo">
+          <img src="img/cabinet-accueil.jpg" srcset="img/cabinet-accueil-600.jpg 600w, img/cabinet-accueil.jpg 960w" sizes="(max-width:860px) 92vw, 440px" width="960" height="1280" loading="lazy" decoding="async" alt="L'accueil du cabinet du Dr Hicham Berrada à Casablanca" data-i-alt="cab_photo_alt">
+          <figcaption data-i="cab_photo">L'accueil du cabinet, Casablanca</figcaption>
+        </figure>
       </div>
       <div class="cab-text rv" data-rv="right">
         <p data-i="cab_2">Notre méthode d'accompagnement et de prise en charge s'appuie sur de longues années d'expérience passées aux côtés de patients souffrant de ces problèmes de santé. Sa seule et unique devise consiste à apporter des solutions concrètes et des réponses claires à ces patients.</p>
@@ -885,6 +892,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 /* ===== Textes arabes (le français est lu directement dans la page) ===== */
 const AR = {
   brand:"د. هشام برادة", brand_sub:"عيادة الأمراض الأيضية واضطرابات النوم", nav_cab:"العيادة", h_bil:"موقع بلغتين", h_sub:"<span>السكري</span><span>أمراض الوزن</span><span>اضطرابات النوم</span><span>التغذية والأكل</span><span>أمراض الكوليسترول</span><span>النقرس</span>",
+  cab_photo:"استقبال العيادة، الدار البيضاء", cab_photo_alt:"استقبال عيادة الدكتور هشام برادة بالدار البيضاء",
   cab_eyebrow:"العيادة", cab_title:"طب نمط الحياة", cab_1:"هذه الأمراض، لكونها مزمنة، تتطلب مرافقة على المدى الطويل، ونظافة حياة جديدة، ونمط عيش أكثر صحة!",
   cab_2:"تعتمد طريقتنا في المرافقة والتكفل على سنوات طويلة من الخبرة إلى جانب المرضى الذين يعانون من هذه المشاكل الصحية. شعارها الوحيد هو تقديم حلول ملموسة وأجوبة واضحة لهؤلاء المرضى.",
   cab_3:"ومع مرور السنوات، ساهمت في ميلاد طب جديد يمكن أن نسميه: <b>طب نمط الحياة</b>!",
@@ -1004,6 +1012,7 @@ const I = {
   wave:'<path d="M2 12h4l2-6 4 12 3-8 2 2h5"/>',
   brain:'<path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1V5a2 2 0 0 0-3-1ZM15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1"/>',
   battery:'<rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2M6 10v4"/>',
+  legs:'<path d="M9 3v7l-1 10H5"/><path d="M15 3v7l1 10h3"/>',
   butterfly:'<path d="M12 8v12M12 8c-2-3-7-4-8-1s2 6 8 5M12 8c2-3 7-4 8-1s-2 6-8 5M12 13c-3 0-6 2-5 5s4 1 5-2M12 13c3 0 6 2 5 5s-4 1-5-2"/>'
 };
 const svg = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${I[k]}</svg>`;
@@ -1014,16 +1023,16 @@ const FAMILIES = [
     {id:"diabete-enfant", ic:"child", c:"c-blue", t:"Diabète de l'enfant", s:"Diabète de type 1 et suivi de croissance",
      intro:"Le diabète de l'enfant est le plus souvent un diabète de type 1 : le pancréas ne produit plus d'insuline. Le traitement repose sur l'insuline, l'éducation de l'enfant et de sa famille, et un suivi régulier pour qu'il grandisse et vive normalement.",
      when:["Soif intense, envie fréquente d'uriner, pipi au lit qui réapparaît","Amaigrissement ou fatigue inexpliqués","Diabète déjà connu à ajuster (glycémies instables, hypoglycémies)","Passage de l'adolescence et préparation à l'autonomie"],
-     care:["Mise en place et réglage du traitement par insuline (stylos, pompe)","Formation de l'enfant et des parents : glycémie, capteurs, resucrage","Lien avec l'école : collations, sport, conduite à tenir","Suivi de la croissance, de l'HbA1c et dépistage des complications"],
+     care:["Mise en place et réglage du traitement par insuline (stylos)","Formation de l'enfant et des parents : glycémie, capteurs, resucrage","Lien avec l'école : collations, sport, conduite à tenir","Suivi de la croissance, de l'HbA1c et dépistage des complications"],
      ar:{t:"سكري الأطفال", s:"السكري من النوع الأول ومتابعة النمو", intro:"سكري الأطفال هو في الغالب سكري من النوع الأول: البنكرياس لم يعد ينتج الأنسولين. يعتمد العلاج على الأنسولين، وتثقيف الطفل وعائلته، ومتابعة منتظمة ليكبر ويعيش بشكل طبيعي.",
        when:["عطش شديد، كثرة التبول، عودة التبول في الفراش","نقص الوزن أو تعب غير مفسَّر","سكري معروف يحتاج إلى ضبط (تقلبات أو انخفاض السكر)","مرحلة المراهقة والاستعداد للاستقلالية"],
-       care:["بدء العلاج بالأنسولين وضبطه (أقلام، مضخة)","تكوين الطفل والوالدين: قياس السكر، أجهزة الاستشعار، التعامل مع الانخفاض","التنسيق مع المدرسة: الوجبات الخفيفة، الرياضة، ما يجب فعله","متابعة النمو والهيموغلوبين السكري والكشف عن المضاعفات"]}},
+       care:["بدء العلاج بالأنسولين وضبطه (أقلام)","تكوين الطفل والوالدين: قياس السكر، أجهزة الاستشعار، التعامل مع الانخفاض","التنسيق مع المدرسة: الوجبات الخفيفة، الرياضة، ما يجب فعله","متابعة النمو والهيموغلوبين السكري والكشف عن المضاعفات"]}},
     {id:"diabete-adulte", ic:"adult", c:"c-blue", t:"Diabète de l'adulte", s:"Type 1, type 2 et formes particulières",
      intro:"Chez l'adulte, le diabète de type 2 est le plus fréquent. Il s'installe souvent sans symptôme. Un bon équilibre protège le cœur, les reins, les yeux et les nerfs.",
-     when:["Glycémie à jeun supérieure à 1,26 g/l ou HbA1c au-dessus de 6,5 %","Diabète déséquilibré malgré le traitement","Besoin de démarrer ou d'adapter l'insuline","Bilan annuel des complications"],
+     when:["Glycémie à jeun supérieure à 1,26 g/l ou HbA1c au-dessus de 6,5 %","Diabète déséquilibré malgré le traitement","Besoin de démarrer ou d'adapter l'insuline","Bilan des complications"],
      care:["Bilan complet et explication des résultats","Choix du traitement adapté : comprimés, injections, insuline","Capteurs de glucose en continu et lecture des courbes","Dépistage des complications : yeux, reins, pieds, cœur"],
      ar:{t:"سكري البالغين", s:"النوع الأول، النوع الثاني والأشكال الخاصة", intro:"عند البالغين، السكري من النوع الثاني هو الأكثر شيوعًا. غالبًا ما يظهر دون أعراض. التوازن الجيد يحمي القلب والكلى والعينين والأعصاب.",
-       when:["سكر الدم على الريق أعلى من 1,26 غ/ل أو هيموغلوبين سكري أعلى من 6,5 %","سكري غير متوازن رغم العلاج","الحاجة إلى بدء الأنسولين أو تعديله","الفحص السنوي للمضاعفات"],
+       when:["سكر الدم على الريق أعلى من 1,26 غ/ل أو هيموغلوبين سكري أعلى من 6,5 %","سكري غير متوازن رغم العلاج","الحاجة إلى بدء الأنسولين أو تعديله","فحص المضاعفات"],
        care:["فحص شامل وشرح النتائج","اختيار العلاج المناسب: أقراص، حقن، أنسولين","أجهزة قياس السكر المستمر وقراءة المنحنيات","الكشف عن المضاعفات: العينان، الكلى، القدمان، القلب"]}},
     {id:"diabete-senior", ic:"senior", c:"c-blue", t:"Diabète du sujet âgé", s:"Un traitement sûr et adapté",
      intro:"Après 70 ans, les objectifs du traitement sont ajustés à l'état de santé global. La priorité est d'éviter les hypoglycémies, les chutes et la dénutrition tout en préservant l'autonomie.",
@@ -1136,6 +1145,13 @@ const FAMILIES = [
      ar:{t:"متلازمة انقطاع التنفس الانسدادي أثناء النوم", s:"الشخير وتوقف التنفس", intro:"أثناء النوم ينغلق الحلق ويتوقف التنفس عدة مرات في الساعة. هذه الانقطاعات تسبب التعب، وترفع الضغط وخطر أمراض القلب، وتزيد الوزن وتُخلّ بتوازن السكري.",
        when:["شخير قوي وتوقف في التنفس يلاحظه المحيطون","تعب عند الاستيقاظ وصداع صباحي","نعاس أثناء السياقة","سمنة أو سكري أو ضغط يصعب التحكم فيه"],
        care:["الكشف بتسجيل النوم","شرح النتائج (مؤشر انقطاع التنفس)","وضع جهاز التنفس الليلي (PPC) عند الحاجة","متابعة الفعالية والتحمل"]}},
+    {id:"jambes-sans-repos", ic:"legs", c:"c-violet", t:"Syndrome des jambes sans repos", s:"Besoin irrésistible de bouger les jambes le soir",
+     intro:"Des sensations désagréables dans les jambes (fourmillements, picotements, impatiences) apparaissent au repos, le soir ou au coucher, et obligent à bouger pour être soulagé. Ce syndrome retarde l'endormissement et fragmente le sommeil. Il est fréquent, souvent lié à un manque de fer, et se traite bien.",
+     when:["Envie irrésistible de bouger les jambes au repos, surtout le soir","Fourmillements, picotements ou « impatiences » soulagés par la marche","Difficulté à s'endormir et réveils nocturnes","Mouvements des jambes pendant le sommeil remarqués par l'entourage"],
+     care:["Consultation dédiée et analyse précise des symptômes","Bilan sanguin : fer (ferritine), reins, glycémie, thyroïde","Enregistrement du sommeil si besoin (polysomnographie)","Traitement adapté : correction du fer, hygiène de vie, médicaments si nécessaire"],
+     ar:{t:"متلازمة تململ الساقين", s:"رغبة لا تقاوم في تحريك الساقين مساءً", intro:"إحساسات مزعجة في الساقين (تنميل، وخز، تململ) تظهر أثناء الراحة، في المساء أو عند النوم، وتدفع إلى تحريك الساقين للشعور بالراحة. تؤخر هذه المتلازمة النوم وتقطعه. وهي شائعة، وغالبًا ما ترتبط بنقص الحديد، ولها علاج جيد.",
+       when:["رغبة لا تقاوم في تحريك الساقين أثناء الراحة، خاصة في المساء","تنميل أو وخز أو تململ يخف بالمشي","صعوبة في النوم واستيقاظ ليلي","حركات الساقين أثناء النوم يلاحظها المحيطون"],
+       care:["استشارة خاصة وتحليل دقيق للأعراض","تحاليل الدم: الحديد (الفيريتين)، الكلى، السكر، الغدة الدرقية","تسجيل النوم عند الحاجة","علاج مناسب: تعويض الحديد، نمط الحياة، أدوية عند الضرورة"]}},
     {id:"polygraphie", ic:"wave", c:"c-teal", t:"Polygraphie du sommeil", s:"Examen à domicile",
      intro:"La polygraphie enregistre pendant une nuit la respiration, les ronflements, l'oxygène dans le sang et la position. Elle se fait chez vous, dans votre lit, avec un petit appareil.",
      when:["Suspicion d'apnées du sommeil","Contrôle de l'efficacité d'un traitement","Bilan avant une chirurgie"],
