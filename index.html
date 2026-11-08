@@ -593,13 +593,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
       </div>
       <div class="hero-photo">
         <figure class="portrait in-photo" style="margin:0"><img src="img/dr-berrada.jpg" alt="Dr Hicham Berrada dans son cabinet à Casablanca" width="800" height="1000" data-i-alt="h_photo_alt"><figcaption data-i="h_photo_cap">Dr Hicham Berrada, au cabinet à Casablanca</figcaption></figure>
-        <a class="float g in-float" href="#avis"><b class="num" data-count="4.8" data-dec="1">4,8</b><span><span class="stars">★★★★★</span><br><span data-count="284">284</span> <span data-i="h_float_g">avis Google</span></span></a>
+        <a class="float g in-float" href="#avis"><b class="num" data-avis="note">4,8</b><span><span class="stars">★★★★★</span><br><span data-avis="nombre">284</span> <span data-i="h_float_g">avis Google</span></span></a>
         <a class="float tv in-float" href="#medias"><span class="chip-tv">2M</span><span><span data-i="h_float_tv1">Invité de</span><br><b style="font-size:.95rem;font-family:var(--f-body)" data-i="h_float_tv2">Sabahiyat</b></span></a>
       </div>
     </div>
     <div class="wrap">
       <div class="proof in d5">
-        <div><b><span class="num" data-count="4.8" data-dec="1">4,8</span> <span class="stars" style="font-size:1rem">★</span></b><span data-i="p1">sur 284 avis Google</span></div>
+        <div><b><span class="num" data-avis="note">4,8</span> <span class="stars" style="font-size:1rem">★</span></b><span data-i="p1">sur 284 avis Google</span></div>
         <div><b>2M<br>MFM<br>SNRT<br>Chada&nbsp;TV</b><span data-i="p2">invité à la télévision et à la radio</span></div>
         <div><b data-i="p3b">CHU de Montpellier</b><span data-i="p3">ancien médecin attaché, formé en France</span></div>
         <div><b data-i="p4b">Le trio</b><span data-i="p4">Diabète, Maladies du poids, Médecine du sommeil</span></div>
@@ -785,7 +785,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
       </div>
       <div class="results" id="results"></div>
       <div class="proofbox rv">
-        <div class="pscore"><span class="big" data-count="4.8" data-dec="1">4,8</span><div><div class="stars" style="font-size:1.2rem" aria-label="4,8/5">★★★★★</div><span class="note" data-i="a_score">284 avis sur Google</span></div></div>
+        <div class="pscore"><span class="big" data-avis="note">4,8</span><div><div class="stars" style="font-size:1.2rem" data-avis="note-aria" aria-label="4,8/5">★★★★★</div><span class="note" data-i="a_score">284 avis sur Google</span></div></div>
         <p class="why" data-i="a_why">Avis authentiques de patients, publiés avec respect de leur confidentialité.</p>
         <a class="btn ghost" href="https://maps.google.com/?cid=11214821160782499541" target="_blank" rel="noopener"><svg class="gg" viewBox="0 0 48 48" aria-label="Google"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.2z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9.1H4.4v5.7C8 41.1 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.7 28.2c-.4-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2v-5.7H4.4C2.9 17.1 2 20.4 2 24s.9 6.9 2.4 9.9l7.3-5.7z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 6.9 4.4 14.1l7.3 5.7c1.7-5.2 6.6-9.1 12.3-9.1z"/></svg><span data-i="a_all">Lire les 284 avis sur Google</span></a>
       </div>
@@ -1494,6 +1494,31 @@ document.getElementById("rdvForm").addEventListener("submit", e => {
   if (new URLSearchParams(location.search).get("theme") === "logo") document.documentElement.dataset.skin = "logo";
   try { localStorage.removeItem("skin"); } catch(e) {}
 })();
+/* ===== Note et nombre d'avis Google, actualisés automatiquement =====
+   /api/avis lit la fiche Google Maps (une fois toutes les 12 h environ).
+   Si le service ne répond pas, les chiffres écrits dans la page restent affichés. */
+(function(){
+  let curN = "284", curR = "4,8";   // chiffres écrits dans la page
+  function apply(note, nombre, rerender){
+    if (!(note >= 1 && note <= 5) || !(nombre >= 1)) return;
+    const n = String(Math.round(nombre)), r = note.toFixed(1).replace(".", ",");
+    if (n === curN && r === curR) return;
+    const swap = s => typeof s === "string" ? s.split(curN).join(n).split(curR).join(r) : s;
+    [FR, AR, UI.fr, UI.ar].forEach(d => Object.keys(d).forEach(k => d[k] = swap(d[k])));
+    const m = document.querySelector('meta[name="description"]'); if (m) m.content = swap(m.content);
+    curN = n; curR = r;
+    document.querySelectorAll('[data-avis="note"]').forEach(el => el.textContent = curR);
+    document.querySelectorAll('[data-avis="nombre"]').forEach(el => el.textContent = curN);
+    document.querySelectorAll('[data-avis="note-aria"]').forEach(el => el.setAttribute("aria-label", curR + "/5"));
+    if (rerender) { applyStatic(); renderHome(); if (!detail.hidden) route(); }
+  }
+  try { const c = JSON.parse(localStorage.getItem("avisGoogle") || "null"); if (c) apply(c.note, c.avis, false); } catch(e) {}
+  window.__avisGoogle = () => fetch("/api/avis").then(r => r.ok ? r.json() : null).then(d => {
+    if (!d) return;
+    apply(d.note, d.avis, true);
+    try { localStorage.setItem("avisGoogle", JSON.stringify({note:d.note, avis:d.avis})); } catch(e) {}
+  }).catch(() => {});
+})();
 (function(){
   let l = null;
   const q = new URLSearchParams(location.search).get("lang");
@@ -1502,6 +1527,7 @@ document.getElementById("rdvForm").addEventListener("submit", e => {
   setLang(l || "fr", true);
   route(true);
   setupReveal();
+  window.__avisGoogle();
   document.getElementById("yr") && (document.getElementById("yr").textContent = new Date().getFullYear());
 })();
 </script>
