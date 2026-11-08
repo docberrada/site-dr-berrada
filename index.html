@@ -103,7 +103,7 @@ section{padding-block:72px;overflow-x:clip}
 [dir="rtl"] .progress i{transform-origin:100% 50%}
 
 /* En-tête */
-header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
 header.top.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.08)}
 .top .wrap{display:flex;align-items:center;gap:12px;padding-block:12px;transition:padding .3s}
 header.top.scrolled .wrap{padding-block:8px}
@@ -117,7 +117,7 @@ header.top.scrolled .wrap{padding-block:8px}
 .hsub{display:flex;flex-wrap:wrap;overflow:hidden;margin-inline-start:-1.3em}
 .hsub>span::before{content:"-";display:inline-block;width:1.3em;text-align:center}
 nav.links{margin-inline-start:auto;display:flex;gap:2px;align-items:center}
-nav.links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.93rem;padding:8px 10px;border-radius:10px}
+nav.links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.93rem;padding:8px 10px;white-space:nowrap;border-radius:10px}
 nav.links a:hover{background:var(--accent-soft)}
 .lang{margin-inline-start:10px;display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;gap:2px;flex:none;background:var(--surface)}
 .lang button{border:0;background:none;color:var(--muted);font:700 .85rem var(--f-body);padding:5px 11px;border-radius:999px;cursor:pointer;line-height:1.2}
@@ -129,6 +129,10 @@ nav.links a:hover{background:var(--accent-soft)}
 .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
 .btn.ghost:hover{border-color:var(--accent);box-shadow:none}
 nav.links .btn{color:#fff;padding:9px 16px;margin-inline-start:6px}
+nav.links a.htel{display:inline-flex;align-items:center;gap:6px;color:var(--warm);font-weight:700;white-space:nowrap;direction:ltr}
+nav.links a.htel svg{width:17px;height:17px;flex:none}
+@media (min-width:1021px) and (max-width:1399px){nav.links a.htel span{display:none}}
+@media (min-width:1021px) and (max-width:1199px){nav.links a{padding:8px 7px}}
 .burger{display:none;background:none;border:0;color:var(--ink);padding:8px;cursor:pointer;flex:none}
 @media (max-width:1020px){
   .burger{display:block}
@@ -244,7 +248,7 @@ ul.dots li::before{content:"";position:absolute;inset-inline-start:4px;top:.6em;
 .ba.photo{aspect-ratio:3/2}
 .ba-layer{position:absolute;inset:0}
 .ba-layer svg,.ba-layer img{width:100%;height:100%;display:block;object-fit:cover}
-.ba-before{clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ba-before{-webkit-clip-path:inset(0 calc(100% - var(--p)) 0 0);clip-path:inset(0 calc(100% - var(--p)) 0 0)}
 .ba-line{position:absolute;top:0;bottom:0;left:var(--p);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.12);pointer-events:none}
 .ba-knob{position:absolute;top:50%;left:var(--p);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--surface);border:2px solid var(--accent);display:grid;place-items:center;color:var(--accent);box-shadow:var(--shadow);pointer-events:none}
 .ba-tag{position:absolute;top:12px;font:700 .78rem var(--f-body);letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;pointer-events:none;z-index:1}
@@ -547,6 +551,35 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   .acc i{font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--bg);border:1px solid var(--line);display:grid;place-items:center;flex:none}
 }
 
+
+/* ===== Compatibilité anciens navigateurs d'ordinateur (Safari Mac ancien) =====
+   Sans ces règles : vidéos et comparateurs avant/après invisibles (hauteur 0),
+   en-tête transparent (textes superposés), puces mal placées. */
+header.top{background:rgba(255,255,255,.96)}
+@supports (background:color-mix(in srgb,red 50%,transparent)){header.top{background:color-mix(in srgb,var(--surface) 92%,transparent)}}
+@supports not (aspect-ratio:1/1){
+  .yt,.yt-frame{height:0;padding-top:56.25%}
+  .ba{height:0;padding-top:70%}
+  .ba.photo{padding-top:66.667%}
+  .portrait{height:0;padding-top:125%}
+  .portrait img{position:absolute;top:0;left:0}
+}
+@supports not (inset:0){
+  body::before{top:0;left:0;right:0}
+  .stage::before{top:-40%;right:-10%}
+  .yt::after,.yt-frame iframe,.ba-layer,.ba input,.map canvas{top:0;right:0;bottom:0;left:0}
+  .yt .play::before{top:-10px;right:-10px;bottom:-10px;left:-10px}
+  .progress,.portrait figcaption,.cv-photo figcaption{left:0;right:0}
+  .float.g{left:-28px}.float.tv{right:-18px}
+  .yt .ch{left:14px}.yt .dur{right:12px}
+  ul.dots li::before{left:4px}
+  .timeline li::before{left:-7px}
+  [dir="rtl"] .float.g{left:auto;right:-28px}[dir="rtl"] .float.tv{right:auto;left:-18px}
+  [dir="rtl"] .yt .ch{left:auto;right:14px}[dir="rtl"] .yt .dur{right:auto;left:12px}
+  [dir="rtl"] ul.dots li::before{left:auto;right:4px}
+  [dir="rtl"] .timeline li::before{left:auto;right:-7px}
+  @media (max-width:920px){.float.g{left:-6px}.float.tv{right:-6px}[dir="rtl"] .float.g{right:-6px}[dir="rtl"] .float.tv{left:-6px}}
+}
 </style>
 </head>
 <body>
@@ -565,6 +598,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
       <a href="#parcours" data-i="nav_cv">Le médecin</a>
       <a href="#medias" data-i="nav_tv">Vu à la TV</a>
       <a href="#avis" data-i="nav_avis">Témoignages</a>
+      <a class="htel num" href="tel:+212522563738" aria-label="Appeler le cabinet : 05 22 56 37 38"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg><span>05 22 56 37 38</span></a>
       <a class="btn" href="#rdv" data-i="nav_rdv">Rendez-vous</a>
     </nav>
     <div class="lang" role="group" aria-label="Langue / اللغة">
@@ -858,6 +892,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
           <span class="tile c-warm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
           <div><b data-i="l_addr1">119, Avenue Mohamed Bouziane</b><br><span data-i="l_addr2">Immeuble Farhatine 6, 3ᵉ étage · Casablanca</span></div>
           <a class="btn" href="https://maps.google.com/?cid=11214821160782499541" target="_blank" rel="noopener" data-i="l_btn">Ouvrir dans Google Maps</a>
+          <a class="btn ghost" href="https://waze.com/ul?ll=33.5622016,-7.5595299&amp;navigate=yes" target="_blank" rel="noopener" data-i="l_waze">Y aller avec Waze</a>
         </div>
       </div>
       <div class="two-btn m-only"><a class="btn" href="https://maps.google.com/?cid=11214821160782499541" target="_blank" rel="noopener" data-i="l_gm">Google Maps</a><a class="btn ghost" href="https://waze.com/ul?ll=33.5622016,-7.5595299&amp;navigate=yes" target="_blank" rel="noopener">Waze</a></div>
@@ -954,7 +989,7 @@ const AR = {
   faq_q6:"هل صحيح أن مريض السكري يجب أن يتوقف عن تناول السكر مدى الحياة؟", faq_a6:"<p><b>خطأ!</b> الإصابة بالسكري لا تعني حذف جميع السكريات نهائياً من النظام الغذائي.</p><p>الأهم هو تعلّم اختيار الأطعمة المناسبة، والتحكم في الكميات، وتوزيع النشويات بشكل يناسب وضعكم.</p><p>ليس لكل النشويات نفس التأثير على نسبة السكر في الدم. فتأثيرها يتوقف خاصةً على نوعها ومؤشرها الجلايسيمي والكمية المستهلكة ومكونات الوجبة.</p><p>يعتمد الدماغ أساساً على الغلوكوز ليعمل. لذلك من المهم اتباع تغذية متوازنة تجمع بين النشويات والبروتينات والدهون، مع تفضيل الأطعمة الجيدة ومصادر النشويات الغنية بالألياف.</p><p>المنتجات السكرية ليست بالضرورة ممنوعة في جميع الحالات، لكن استهلاكها يجب أن يكون معقولاً ومدمجاً في تغذية مناسبة. وتناولها ضمن وجبة متوازنة قد يغيّر سرعة امتصاص النشويات، دون أن يلغي تأثيرها على نسبة السكر في الدم.</p><p><b>التغذية في صميم علاج السكري.</b></p><p>خلال الاستشارة، لا يقتصر التكفل على وصف الأدوية. بل تستفيدون أيضاً من نصائح غذائية شخصية ووصفة غذائية مفصّلة تحدد الأطعمة المفضّلة والكميات الموصى بها وتوزيعها خلال اليوم.</p><p><b>الهدف</b> هو مساعدتكم على تحقيق توازن أفضل للسكري مع الحفاظ على تغذية متنوعة، تناسب عاداتكم ولا تحرمكم من متعة الأكل.</p>",
   faq_q7:"هل تكفي نظائر GLP-1 لفقدان الوزن؟", faq_a7:"<p><b>لا.</b> نظائر GLP-1 أدوات علاجية فعّالة في التكفل بالسمنة، لكنها لا تكفي وحدها لضمان نتائج مثلى ودائمة.</p><p>هذه الأدوية لا تُصرف إلا بوصفة طبية، ويمكن استعمالها عند البالغين، وبالنسبة لبعض الجزيئات وفي حالات محددة، عند الأطفال والمراهقين. ويتطلب وصفها تقييماً طبياً دقيقاً في احترام للدواعي المرخّص بها.</p><p>يقوم التكفل الأمثل بالسمنة على عدة ركائز متكاملة:</p><ul><li><b>علاج شخصي:</b> اختيار الجزيء وتعديل الجرعات تدريجياً حسب خصائص المريض وتحمّله ونتائجه وأهدافه.</li><li><b>مراقبة طبية منتظمة:</b> تتبّع الفعالية والآثار الجانبية وتطوّر الحالة الصحية.</li><li><b>إعادة التوازن الغذائي:</b> ملاءمة المدخول الغذائي مع احتياجات كل مريض.</li><li><b>إعادة التربية الغذائية:</b> تعلّم عادات جديدة للحفاظ على النتائج على المدى الطويل.</li><li><b>التكفل بالسلوك الغذائي:</b> تحديد وتحسين السلوكيات التي قد تؤدي إلى زيادة الوزن.</li><li><b>مكمّلات عند الحاجة:</b> الوقاية من النقص الغذائي أو تصحيحه، خاصةً في حالة مدخول غير كافٍ أو فقدان كبير للوزن.</li><li><b>التكفل بمضاعفات السمنة:</b> السكري، اضطراب الدهون، ارتفاع ضغط الدم، انقطاع النفس أثناء النوم وغيرها من المضاعفات المحتملة.</li></ul><p>توجد عدة نظائر لـ GLP-1، تختلف في دواعي الاستعمال وطرق الأخذ ودرجة الفعالية. ويجب أن يُلائَم اختيار العلاج مع كل مريض.</p><p><b>مقاربتنا:</b> ألّا نكتفي بوصف دواء، بل أن نقدّم تكفلاً شاملاً بالسمنة يجمع بين العلاج الطبي والمرافقة الغذائية والتغيير الدائم لنمط الحياة.</p><p><b>الهدف</b> هو تحقيق فقدان وزن ملموس، والحفاظ على الصحة، وتعزيز استمرار النتائج على المدى الطويل.</p>",
   mb_call:"اتصل", mb_back:"اتصلوا بي", r_mail:"البريد الإلكتروني", mb_go:"الطريق", l_gm:"خرائط Google", l_acc1:"عمارة فرحتين 6، الطابق الثالث", l_acc2:"يوجد مصعد",
-  l_eyebrow:"العنوان", l_title:"الوصول إلى العيادة", l_addr1:"119، شارع محمد بوزيان", l_addr2:"عمارة فرحتين 6، الطابق الثالث · الدار البيضاء", l_btn:"افتح في خرائط Google",
+  l_eyebrow:"العنوان", l_title:"الوصول إلى العيادة", l_addr1:"119، شارع محمد بوزيان", l_addr2:"عمارة فرحتين 6، الطابق الثالث · الدار البيضاء", l_btn:"افتح في خرائط Google", l_waze:"الذهاب عبر Waze",
   ft1:"© عيادة الدكتور هشام برادة", ft_addr:"119 شارع محمد بوزيان، الدار البيضاء", ft2:"المعلومات الواردة في هذا الموقع لا تعوّض الاستشارة الطبية."
 };
 /* Textes générés par le script, dans les deux langues */
@@ -1484,7 +1519,9 @@ document.getElementById("rdvForm").addEventListener("submit", e => {
     ctx.fillStyle = g("--surface"); ctx.beginPath(); ctx.arc(px,py,4,0,7); ctx.fill();
   }
   draw(); addEventListener("resize", draw); addEventListener("hashchange", () => setTimeout(draw, 50));
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+  /* anciens Safari (Mac) : addEventListener n'existe pas ici, il faut addListener, sinon tout le site s'arrête */
+  const mqDark = matchMedia("(prefers-color-scheme: dark)");
+  if (mqDark.addEventListener) mqDark.addEventListener("change", draw); else if (mqDark.addListener) mqDark.addListener(draw);
 })();
 
 /* ===== Démarrage ===== */
