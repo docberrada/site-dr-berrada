@@ -93,7 +93,7 @@ p{margin:0}
 :root[lang="ar"] .eyebrow{letter-spacing:0;font-size:.9rem}
 .lead{color:var(--muted);max-width:62ch;margin-top:12px;font-size:1.06rem}
 .head{margin-bottom:32px}
-section{padding-block:72px;overflow-x:clip}
+section{padding-top:72px;padding-bottom:72px;overflow-x:clip}
 .stars{color:var(--gold);letter-spacing:2px}
 [dir="rtl"] .flip{transform:scaleX(-1)}
 
@@ -105,8 +105,8 @@ section{padding-block:72px;overflow-x:clip}
 /* En-tête */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
 header.top.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.08)}
-.top .wrap{display:flex;align-items:center;gap:12px;padding-block:12px;transition:padding .3s}
-header.top.scrolled .wrap{padding-block:8px}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-top:12px;padding-bottom:12px;transition:padding .3s}
+header.top.scrolled .wrap{padding-top:8px;padding-bottom:8px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
 .logo{width:44px;height:44px;flex:none;border-radius:50%;overflow:hidden;background:#fff}
 .logo img{width:100%;height:100%;object-fit:cover;display:block}
@@ -114,7 +114,8 @@ header.top.scrolled .wrap{padding-block:8px}
 .brand small{color:var(--muted);font-size:.78rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .brand>span{min-width:0;overflow:hidden}.brand b{overflow:hidden;text-overflow:ellipsis}
 /* Spécialités séparées par des tirets ; le tiret qui tomberait en début de ligne est masqué */
-.hsub{display:flex;flex-wrap:wrap;overflow:hidden;margin-inline-start:-1.3em}
+.hsub-w{overflow:hidden}
+.hsub{display:flex;flex-wrap:wrap;margin-left:-1.3em}[dir="rtl"] .hsub{margin-left:0;margin-right:-1.3em}
 .hsub>span::before{content:"-";display:inline-block;width:1.3em;text-align:center}
 nav.links{margin-inline-start:auto;display:flex;gap:2px;align-items:center}
 nav.links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.93rem;padding:8px 10px;white-space:nowrap;border-radius:10px}
@@ -152,7 +153,7 @@ nav.links a.htel svg{width:17px;height:17px;flex:none}
 @media (max-width:420px){.logo{width:36px;height:36px}.brand{gap:8px}.brand b{font-size:clamp(.8rem,3.8vw,1.04rem)}.brand small{font-size:clamp(.62rem,2.9vw,.72rem)}}
 
 /* Héros */
-.hero{padding-block:44px 28px}
+.hero{padding-top:44px;padding-bottom:28px}
 .hgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
 .hero h1{font-size:clamp(2.1rem,5.6vw,3.8rem);font-weight:800;letter-spacing:-.025em;color:#27276f}
 .hero h1 em{font-style:normal;color:#27276f}
@@ -407,13 +408,13 @@ textarea{min-height:84px;resize:vertical}
 .map .over div{min-width:0;flex:1 1 220px}
 .map .over span{color:var(--muted);font-size:.93rem}
 
-footer{border-top:1px solid var(--line);padding-block:28px 100px;color:var(--muted);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:100px;color:var(--muted);font-size:.88rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
 .ft-id{display:grid;gap:4px;justify-items:start}.ft-addr{white-space:nowrap;font-size:clamp(.78rem,3.6vw,.88rem)}
 .ft-tel{display:inline-flex;align-items:center;gap:8px;margin-top:4px;padding:8px 14px;border:1.5px solid var(--line);border-radius:999px;color:var(--ink);font-weight:700;text-decoration:none;background:var(--surface)}.ft-tel svg{color:var(--accent)}
 
 /* Page détail */
-.detail{padding-block:28px 64px}
+.detail{padding-top:28px;padding-bottom:64px}
 .back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:600;font-size:.93rem;margin-bottom:22px}
 .d-head{display:flex;gap:18px;align-items:center;margin-bottom:22px}
 .d-head .tile{width:64px;height:64px;border-radius:18px}
@@ -617,7 +618,7 @@ header.top{background:rgba(255,255,255,.96)}
       <div>
         <p class="langpill in"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span class="bil"><span lang="fr">Site en 2 langues</span><span class="sep">·</span><span lang="ar" dir="rtl">موقع بلغتين</span></span><button type="button" data-lang="ar" lang="ar">عربي</button><button type="button" data-lang="fr">Français</button></p>
         <h1 class="in d1" data-i="h_title">Centre des maladies métaboliques <em>et du sommeil</em></h1>
-        <p class="hsub in d2" data-i="h_sub"><span>Diabète</span><span>Maladies du poids</span><span>Maladies du sommeil</span><span>Nutrition et alimentation</span><span>Maladies du cholestérol</span><span>Goutte</span></p>
+        <div class="hsub-w"><p class="hsub in d2" data-i="h_sub"><span>Diabète</span><span>Maladies du poids</span><span>Maladies du sommeil</span><span>Nutrition et alimentation</span><span>Maladies du cholestérol</span><span>Goutte</span></p></div>
         <div class="welcome in d3">
           <p data-i="h_p1"><b>Bienvenue au cabinet du Docteur Berrada Hicham</b></p>
           <p data-i="h_p2">Une adresse unique, pour prendre en charge le diabète, les problèmes de poids, les troubles du sommeil et les maladies de la nutrition.</p>
@@ -1358,7 +1359,11 @@ function renderHome(){
 }
 
 /* ===== Vidéos : lecture sur place (ordinateur et mobile) ===== */
-const canEmbed = !/claude|anthropic/i.test(location.hostname) && location.protocol !== "file:";
+/* Anciens Safari (Mac) : le lecteur YouTube intégré y reste noir. On garde alors l'aperçu de la vidéo,
+   et un clic ouvre la vidéo sur YouTube. (?ancien=1 dans l'adresse simule un ancien navigateur pour tester) */
+const TEST_OLD = /[?&]ancien=1/.test(location.search);
+const OLD_BROWSER = TEST_OLD || !(window.CSS && CSS.supports && CSS.supports("aspect-ratio", "1/1"));
+const canEmbed = !OLD_BROWSER && !/claude|anthropic/i.test(location.hostname) && location.protocol !== "file:";
 document.querySelectorAll("[data-yt]").forEach(a => {
   const id = a.dataset.yt;
   a.style.backgroundImage = `linear-gradient(135deg,rgba(15,29,36,.25),rgba(15,29,36,.25)),url(https://i.ytimg.com/vi/${id}/hqdefault.jpg),linear-gradient(135deg,#1d3440,#0b161c)`;
@@ -1562,6 +1567,44 @@ document.getElementById("rdvForm").addEventListener("submit", e => {
   setupReveal();
   window.__avisGoogle();
   document.getElementById("yr") && (document.getElementById("yr").textContent = new Date().getFullYear());
+})();
+/* ===== Anciens Safari : les espaces « gap » entre éléments en ligne ne sont pas compris.
+   On les remplace par des marges, calculées automatiquement. ===== */
+(function(){
+  const t = document.createElement("div");
+  t.style.cssText = "display:flex;flex-direction:column;row-gap:1px;position:absolute;visibility:hidden";
+  t.innerHTML = "<div></div><div></div>"; document.body.appendChild(t);
+  const ok = t.scrollHeight === 1; t.remove();
+  if (ok && !TEST_OLD) return;
+  const px = v => { const n = parseFloat(v); return isNaN(n) ? 0 : n; };
+  function fix(){
+    document.querySelectorAll("body *").forEach(el => {
+      const cs = getComputedStyle(el);
+      if (!/flex/.test(cs.display)) return;
+      const rg = px(cs.rowGap), cg = px(cs.columnGap);
+      if (!rg && !cg) return;
+      if (TEST_OLD) { el.style.rowGap = "0px"; el.style.columnGap = "0px"; }
+      const kids = [...el.children].filter(k => { const c = getComputedStyle(k); return c.position !== "absolute" && c.position !== "fixed" && c.display !== "none"; });
+      const col = cs.flexDirection.indexOf("column") === 0, wrap = cs.flexWrap !== "nowrap";
+      const rtl = cs.direction === "rtl", endProp = rtl ? "marginLeft" : "marginRight", endCss = rtl ? "margin-left" : "margin-right";
+      const add = (node, prop, cssProp, v) => { node.style[prop] = (px(getComputedStyle(node).getPropertyValue(cssProp)) + v) + "px"; };
+      kids.forEach((k, i) => {
+        const last = i === kids.length - 1;
+        if (k.dataset.gapKid === (last ? "l" : "1")) return;
+        if (k.dataset.gapKid) k.style.marginBottom = k.style.marginRight = k.style.marginLeft = "";
+        k.dataset.gapKid = last ? "l" : "1";
+        if (col) { if (!last && rg) add(k, "marginBottom", "margin-bottom", rg); }
+        else if (!wrap) { if (!last && cg) add(k, endProp, endCss, cg); }
+        else { if (cg && !last) add(k, endProp, endCss, cg); if (rg) add(k, "marginBottom", "margin-bottom", rg); }
+      });
+      if (!col && wrap && kids.length && !el.dataset.gapBox) { el.dataset.gapBox = "1"; if (rg) add(el, "marginBottom", "margin-bottom", -rg); }
+    });
+  }
+  window.__gapFix = fix;
+  fix();
+  /* contenus créés plus tard (changement de langue, pages détail, avis) */
+  let timer;
+  new MutationObserver(() => { clearTimeout(timer); timer = setTimeout(fix, 60); }).observe(document.body, {childList:true, subtree:true});
 })();
 </script>
 </body>
