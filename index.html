@@ -467,16 +467,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 .langpill button[lang="ar"]{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;font-size:.95rem}
 .langpill button:hover{background:var(--accent);color:var(--accent-ink)}
 .hsub{margin-top:16px;color:#2f86b8;font-weight:600;font-size:1.05rem;max-width:56ch;line-height:1.6}
-.cab{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
-.cab .head{margin:0}
-.cab-photo{margin:22px 0 0;max-width:440px}
+/* Ordinateur : photo à gauche sur toute la hauteur, titre + texte ensemble à droite */
+.cab{display:grid;grid-template-columns:.85fr 1.15fr;grid-template-areas:"photo head" "photo text";grid-template-rows:auto 1fr;column-gap:56px;row-gap:22px;align-items:start}
+.cab .head{margin:0;grid-area:head}
+.cab-text{grid-area:text}
+.cab-photo{grid-area:photo;margin:0;max-width:460px;position:sticky;top:96px}
 .cab-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 60%;border-radius:22px;box-shadow:var(--shadow)}
 .cab-photo figcaption{margin-top:8px;font-size:.88rem;color:var(--muted)}
 .cab-big{font-family:var(--f-display);font-size:1.35rem;line-height:1.4;margin-top:18px;color:#2f86b8}
 .cab-text{display:grid;gap:14px;color:var(--muted);font-size:1.04rem;max-width:62ch}
 .cab-text b{color:var(--ink)}
 .cab-promise{color:var(--ink);font-weight:600;border-inline-start:3px solid var(--warm);padding-inline-start:16px}
-@media (max-width:860px){.cab{grid-template-columns:1fr;gap:20px}.cab .head{position:static}}
+@media (max-width:860px){.cab{grid-template-columns:1fr;grid-template-areas:none;grid-template-rows:none;gap:20px}.cab .head,.cab-text,.cab-photo{grid-area:auto}.cab .head{position:static}.cab-photo{position:static;max-width:440px}}
 /* Témoignages : bloc de preuve Google + cartes au format Google */
 .proofbox{display:grid;grid-template-columns:auto 1fr auto;gap:18px 28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px 24px;margin-bottom:18px}
 .pscore{display:flex;align-items:center;gap:14px}
@@ -511,7 +513,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   .fab{display:none!important}
   /* cabinet */
   #cabinet .cab{display:flex;flex-direction:column}
-  #cabinet .head{order:1}#cabinet .eng{order:2}#cabinet .more-t{order:3}#cabinet .cab-text{order:4;display:none}
+  #cabinet .head{order:1}#cabinet .cab-photo{order:2}#cabinet .eng{order:3}#cabinet .more-t{order:4}#cabinet .cab-text{order:5;display:none}
   #cabinet.open .cab-text{display:grid;gap:12px;margin-top:14px}
   .eng{display:grid;gap:10px;margin-top:14px}
   .eng>div{display:flex;gap:12px;align-items:center;background:var(--bg);border-radius:14px;padding:12px}
@@ -609,15 +611,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 
   <section id="cabinet" class="bleed" style="background:var(--surface)">
     <div class="wrap cab">
-      <div class="head rv" data-rv="left">
+      <div class="head rv" data-rv="right">
         <p class="eyebrow" data-i="cab_eyebrow">Le cabinet</p>
         <h2 data-i="cab_title">La médecine du mode de vie</h2>
         <p class="cab-big" data-i="cab_1">Ces maladies, par leur chronicité, nécessitent un accompagnement dans le temps, une nouvelle hygiène de vie et un mode de vie plus sain !</p>
-        <figure class="cab-photo">
-          <img src="img/cabinet-accueil.jpg" width="660" height="880" loading="lazy" decoding="async" alt="L'accueil du cabinet du Dr Hicham Berrada à Casablanca" data-i-alt="cab_photo_alt">
-          <figcaption data-i="cab_photo">L'accueil du cabinet, Casablanca</figcaption>
-        </figure>
       </div>
+      <figure class="cab-photo rv" data-rv="left">
+        <img src="img/cabinet-accueil.jpg" width="660" height="880" loading="lazy" decoding="async" alt="L'accueil du cabinet du Dr Hicham Berrada à Casablanca" data-i-alt="cab_photo_alt">
+        <figcaption data-i="cab_photo">L'accueil du cabinet, Casablanca</figcaption>
+      </figure>
       <div class="cab-text rv" data-rv="right">
         <p data-i="cab_2">Notre méthode d'accompagnement et de prise en charge s'appuie sur de longues années d'expérience passées aux côtés de patients souffrant de ces problèmes de santé. Sa seule et unique devise consiste à apporter des solutions concrètes et des réponses claires à ces patients.</p>
         <p data-i="cab_3">Au fil des années, elle a permis de contribuer à la naissance d'une nouvelle médecine qu'on pourrait intituler : <b>la médecine du mode de vie</b> !</p>
