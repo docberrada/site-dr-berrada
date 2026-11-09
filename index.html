@@ -473,9 +473,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 .langpill button:hover{background:var(--accent);color:var(--accent-ink)}
 .hsub{margin-top:16px;color:#2f86b8;font-weight:600;font-size:1.05rem;max-width:56ch;line-height:1.6}
 /* Ordinateur : photo à gauche sur toute la hauteur, titre + texte ensemble à droite */
-.cab{display:grid;grid-template-columns:.85fr 1.15fr;grid-template-areas:"photo head" "photo text";grid-template-rows:auto 1fr;column-gap:56px;row-gap:22px;align-items:start}
+.cab{display:grid;grid-template-columns:.85fr 1.15fr;grid-template-areas:"photo head" "photo text" "photo eng";grid-template-rows:auto auto 1fr;column-gap:56px;row-gap:22px;align-items:start}
 .cab .head{margin:0;grid-area:head}
 .cab-text{grid-area:text}
+/* Les 3 engagements (suivi, traitement, méthodes) : aussi sur ordinateur */
+.cab .eng{grid-area:eng;display:grid;gap:10px;max-width:62ch}
+.cab .eng>div{display:flex;gap:14px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.cab .eng .tile{flex:none}.cab .eng b{display:block;font-size:1rem;color:var(--ink)}.cab .eng small{color:var(--muted);font-size:.92rem}
 .cab-photo{grid-area:photo;margin:0;max-width:460px;position:sticky;top:96px}
 .cab-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 60%;border-radius:22px;box-shadow:var(--shadow)}
 .cab-photo figcaption{margin-top:8px;font-size:.88rem;color:var(--muted)}
@@ -483,7 +487,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 .cab-text{display:grid;gap:14px;color:var(--muted);font-size:1.04rem;max-width:62ch}
 .cab-text b{color:var(--ink)}
 .cab-promise{color:var(--ink);font-weight:600;border-inline-start:3px solid var(--warm);padding-inline-start:16px}
-@media (max-width:860px){.cab{grid-template-columns:1fr;grid-template-areas:none;grid-template-rows:none;gap:20px}.cab .head,.cab-text,.cab-photo{grid-area:auto}.cab .head{position:static}.cab-photo{position:static;max-width:440px}}
+@media (max-width:860px){.cab{grid-template-columns:1fr;grid-template-areas:none;grid-template-rows:none;gap:20px}.cab .head,.cab-text,.cab-photo,.cab .eng{grid-area:auto}.cab .head{position:static}.cab-photo{position:static;max-width:440px}}
 /* Témoignages : bloc de preuve Google + cartes au format Google */
 .proofbox{display:grid;grid-template-columns:auto 1fr auto;gap:18px 28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px 24px;margin-bottom:18px}
 .pscore{display:flex;align-items:center;gap:14px}
@@ -662,7 +666,7 @@ header.top{background:rgba(255,255,255,.96)}
         <p data-i="cab_5">Les méthodes et les outils utilisés sont validés par les prestigieux centres de recherche étrangers, et font de ce centre l'une des références à Casablanca.</p>
         <p class="cab-promise" data-i="cab_6">Vous offrir une bonne prise en charge, dans un cadre agréable, en présence d'une équipe à l'oreille attentive : tels sont nos engagements !</p>
       </div>
-      <div class="eng m-only">
+      <div class="eng">
         <div><span class="tile c-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><span><b data-i="cab_e1t">Un suivi dans la durée</b><small data-i="cab_e1s">Ces maladies se soignent dans le temps, pas en une visite.</small></span></div>
         <div><span class="tile c-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span><span><b data-i="cab_e2t">Un traitement adapté à chacun</b><small data-i="cab_e2s">Des soins médicaux aux habitudes de vie.</small></span></div>
         <div><span class="tile c-warm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b data-i="cab_e3t">Des méthodes validées</b><small data-i="cab_e3s">Par les centres de recherche internationaux.</small></span></div>
@@ -694,7 +698,7 @@ header.top{background:rgba(255,255,255,.96)}
       </div>
       <div>
         <div class="keys rv">
-          <div><i data-i="cv_k2i">Montpellier</i><b data-i="cv_k2t">Unité diabète - nutrition</b><small data-i="cv_k2s">Diplôme de 3e cycle en diabétologie, nutrition et diététique</small></div>
+          <div><i data-i="cv_k2i">Montpellier</i><b data-i="cv_k2t">Unité diabète - nutrition</b><small data-i="cv_k2s">Diplômes de 3e cycle en diabétologie, nutrition et diététique</small></div>
           <div><i data-i="cv_k3i">CHU de Montpellier</i><b data-i="cv_k3t">Médecin attaché aux CHU<br>Lapeyronie et Gui&nbsp;de&nbsp;Chauliac</b><small data-i="cv_k3s">Maladies métaboliques, neurologie, laboratoire du sommeil</small></div>
         </div>
       </div>
